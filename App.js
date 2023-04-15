@@ -1,28 +1,15 @@
 
 import { StyleSheet, Text, Image ,View} from 'react-native';
-import Login from "./Screens/login";
-import ImageScreen from './Screens/image';
+import Login from "./src/Screens/login";
+import ImageScreen from './src/Screens/image';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-const Stack = createStackNavigator();
+import Home from "./src/navigation/navigation";
+
+
 
 export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="ImageScreen"  component={ImageScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+  return <Home />
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
