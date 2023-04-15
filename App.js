@@ -1,20 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
+
 import { StyleSheet, Text, Image ,View} from 'react-native';
 import Login from "./Screens/login";
+import ImageScreen from './Screens/image';
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+
+const Stack = createStackNavigator();
+
 export default function App() {
   return (
-    <View style={styles.container}>
-
-      {/* <Text>Open up App.js to start working on your app!</Text>
-      <Image
-        style={{ width: "100%" }}
-        resizeMode="contain"
-        source={require("./assets/chat1.png")}
-      />
-      <StatusBar style="auto" /> */}
-      <Login />
-      
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="ImageScreen"  component={ImageScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 

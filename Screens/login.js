@@ -1,13 +1,16 @@
 import React from "react";
 import { View, TextInput, Button, StyleSheet, Text } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const Login = () => {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const navigation = useNavigation();
 
   const handleLogin = () => {
     console.log("Username:", username);
     console.log("Password:", password);
+    navigation.navigate("ImageScreen");
   };
 
   return (
