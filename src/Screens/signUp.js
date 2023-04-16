@@ -1,8 +1,8 @@
 import React from "react";
-import { View, TextInput, Button, StyleSheet, Text } from "react-native";
+import { View, TextInput, Button, StyleSheet, Text, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword   } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword   } from "firebase/auth";
 import Button_1 from "../components/button1"
 import firebaseConfig from "../firebase/firebaseConfig";
 
@@ -13,28 +13,32 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 
-const SignIn = () => {
+const SignUp = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [RePassword, setRePassword] = React.useState("");
   const navigation = useNavigation();
 
-  const handleSignIn = () => {
-    // console.log("Username:", username);
-    // console.log("Password:", password);
+  const handleSignUp = () => {
 
-    signInWithEmailAndPassword (auth, email, password)
-      .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        // console.log("Signed Un", user);
-        navigation.navigate("CreateChat");
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
-    });
+    if (password != RePassword ) {
+      Alert.alert("Password Do not match, please try again")
+    }else{
+      createUserWithEmailAndPassword (auth, email, password)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          // console.log("Signed Un", user);
+          navigation.navigate("CreateChat");
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+      });
+    }
+
     
   };
 
@@ -42,7 +46,7 @@ const SignIn = () => {
     <View style={styles.container}>
 
       <View style={styles.container1}>
-        <Text style={styles.SignInLabel}>SignIn</Text>
+        <Text style={styles.SignUpLabel}>SignUp</Text>
       </View>
 
       <View style={{width: '100%'}} >
@@ -61,10 +65,18 @@ const SignIn = () => {
             value={password}
             onChangeText={setPassword}
           />
+          <TextInput
+            style={styles.input}
+            placeholder="Retype Password"
+            placeholderTextColor={'#ffffff'}
+            secureTextEntry
+            value={RePassword}
+            onChangeText={setRePassword}
+          />
       </View>
 
       <View style={styles.container2} >
-        <Button_1 title="SignIn" onPress={handleSignIn} />
+        <Button_1 title="SignUp" onPress={handleSignUp} />
       </View>
 
     </View>
@@ -91,7 +103,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     top: "6%"
   },
-  SignInLabel: {
+  SignUpLabel: {
     fontSize: 50,
     fontWeight: "bold",
     marginBottom: 24,
@@ -125,4 +137,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignIn;
+export default SignUp;
