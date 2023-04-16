@@ -1,16 +1,41 @@
 import React from "react";
 import { View, TextInput, Button, StyleSheet, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { initializeApp } from "firebase/app";
+import { getAuth, signInWithEmailAndPassword   } from "firebase/auth";
+import firebaseConfig from "../firebase/firebaseConfig";
+
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+
+// Initialize Firebase Authentication and get a reference to the service
+const auth = getAuth(app);
 
 const Login = () => {
-  const [username, setUsername] = React.useState("");
+  const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const navigation = useNavigation();
 
   const handleLogin = () => {
     // console.log("Username:", username);
     // console.log("Password:", password);
-    navigation.navigate("ImageScreen");
+
+    signInWithEmailAndPassword (auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        console.log("Signed in", user);
+        navigation.navigate("ImageScreen");
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+    });
+    
   };
 
   return (
@@ -18,9 +43,9 @@ const Login = () => {
       <Text style={styles.loginLabel}>Login</Text>
       <TextInput
         style={styles.input}
-        placeholder="Username"
-        value={username}
-        onChangeText={setUsername}
+        placeholder="Email"
+        value={email}
+        onChangeText={setEmail}
       />
       <TextInput
         style={styles.input}
@@ -56,6 +81,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 12,
     marginBottom: 16,
+    borderRadius: 12,
     backgroundColor: "#FFFFFF",
     fontSize: 22,
     color: "#333",

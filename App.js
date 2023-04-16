@@ -14,7 +14,7 @@ try {
 
 const app = initializeApp(firebaseConfig)
 
-console.log(app);
+// console.log(app);
 
 import Home from "./src/navigation/navigation";
 
