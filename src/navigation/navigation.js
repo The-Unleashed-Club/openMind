@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 export default function Home() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{ headerShown: false }} >
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="ImageScreen"  component={ImageScreen} />
       </Stack.Navigator>
