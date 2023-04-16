@@ -1,6 +1,6 @@
  import React, { useState } from "react";
 import {
-  SafeAreaView,
+  ActivityIndicator,
   StyleSheet,
   TextInput,
   ScrollView,
@@ -12,13 +12,16 @@ import Button_1 from "../components/button1";
 const CreateChat = () => {
   const [inputText, setInputText] = useState("");
   const [responseText, setResponseText] = useState("");
+  const [responseRecieve, setresponseRecieve] = useState(false);
 
   const handleInputChange = (text) => {
     setInputText(text);
   };
 
   const handleChatSubmit = async () => {
+    setresponseRecieve(true)
     if (inputText === "") {
+      setresponseRecieve(false);
       return;
     }
 
@@ -48,6 +51,7 @@ const CreateChat = () => {
         json.choices[0].message.content
       ) {
         setResponseText(json.choices[0].message.content);
+        setresponseRecieve(false)
       } else {
         console.error("Invalid response format:", json);
       }
@@ -62,13 +66,21 @@ const CreateChat = () => {
     <View style={styles.container}>
       
 
-      <ScrollView >
+      <ScrollView style={{width: '100%'}} >
 
         <View style={styles.container1} >
-          {responseText !== "" && (
+          { responseText !== "" && (
             <Text style={styles.responseText}>Response: {responseText}</Text>
           )}
         </View>
+
+        { responseRecieve == true ? (
+            <ActivityIndicator size="large" color="#20DF7F" />
+        ) : (
+          <View />
+        )}
+
+        
 
         <View style={styles.container2}>
 
