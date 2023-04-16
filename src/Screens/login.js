@@ -3,6 +3,7 @@ import { View, TextInput, Button, StyleSheet, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithEmailAndPassword   } from "firebase/auth";
+import Button_1 from "../components/button1"
 import firebaseConfig from "../firebase/firebaseConfig";
 
 
@@ -12,12 +13,12 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 
-const Login = () => {
+const SignIn = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const navigation = useNavigation();
 
-  const handleLogin = () => {
+  const handleSignIn = () => {
     // console.log("Username:", username);
     // console.log("Password:", password);
 
@@ -25,7 +26,7 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        console.log("Signed in", user);
+        // console.log("Signed Un", user);
         navigation.navigate("CreateChat");
         // ...
       })
@@ -39,22 +40,33 @@ const Login = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.loginLabel}>Login</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        secureTextEntry
-        value={password}
-        onChangeText={setPassword}
-      />
-      <Button title="Login" onPress={handleLogin} />
-      <Text style={styles.forgotPassword}>Forgot Password?</Text>
+
+      <View style={styles.container1}>
+        <Text style={styles.SignInLabel}>SignIn</Text>
+      </View>
+
+      <View style={{width: '100%'}} >
+          <TextInput
+            style={styles.input}
+            placeholder="Email"
+            placeholderTextColor={'#ffffff'}
+            value={email}
+            onChangeText={setEmail}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Password"
+            placeholderTextColor={'#ffffff'}
+            secureTextEntry
+            value={password}
+            onChangeText={setPassword}
+          />
+      </View>
+
+      <View style={styles.container2} >
+        <Button_1 title="SignIn" onPress={handleSignIn} />
+      </View>
+
     </View>
   );
 };
@@ -64,13 +76,26 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    padding: 25,
+    paddingHorizontal: "10%",
+    backgroundColor: '#ffffff'
   },
-  loginLabel: {
+  container1:{
+    width: "100%",
+    justifyContent: "center",
+    alignItems: 'center',
+    alignSelf: "center",
+  },
+  container2:{
+    width: "100%",
+    justifyContent: "center",
+    alignItems: 'center',
+    top: "6%"
+  },
+  SignInLabel: {
     fontSize: 50,
     fontWeight: "bold",
     marginBottom: 24,
-    color: "#333",
+    color: "#224957",
   },
   input: {
     width: "100%",
@@ -81,9 +106,9 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     marginBottom: 16,
     borderRadius: 12,
-    backgroundColor: "#FFFFFF",
-    fontSize: 22,
-    color: "#333",
+    backgroundColor: "#224957",
+    fontSize: 18,
+    color: "#ffffff",
   },
   forgotPassword: {
     marginTop: 16,
@@ -100,4 +125,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default SignIn;
