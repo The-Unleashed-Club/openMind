@@ -9,7 +9,6 @@ import firebaseConfig from "../firebase/firebaseConfig";
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 
@@ -27,7 +26,7 @@ const Login = () => {
         // Signed in 
         const user = userCredential.user;
         console.log("Signed in", user);
-        navigation.navigate("ImageScreen");
+        navigation.navigate("CreateChat");
         // ...
       })
       .catch((error) => {
