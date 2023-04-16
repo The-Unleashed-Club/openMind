@@ -1,28 +1,26 @@
+import { getApp, initializeApp } from 'firebase/app';
+import firebaseConfig from './src/firebase/firebaseConfig';
 
-import { StyleSheet, Text, Image ,View} from 'react-native';
-import Login from "./Screens/login";
-import ImageScreen from './Screens/image';
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 
-const Stack = createStackNavigator();
-
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="ImageScreen"  component={ImageScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
+try {
+  initializeApp(firebaseConfig);
+} catch (err) {
+  // we skip the “already exists” message which is
+  // not an actual error when we’re hot-reloading
+  if (!getApp.length) {
+    console.error("Firebase initialization error raised", err.stack);
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const app = initializeApp(firebaseConfig)
+
+console.log(app);
+
+import Home from "./src/navigation/navigation";
+
+
+
+export default function App() {
+  return <Home />
+}
+

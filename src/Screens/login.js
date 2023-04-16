@@ -8,8 +8,8 @@ const Login = () => {
   const navigation = useNavigation();
 
   const handleLogin = () => {
-    console.log("Username:", username);
-    console.log("Password:", password);
+    // console.log("Username:", username);
+    // console.log("Password:", password);
     navigation.navigate("ImageScreen");
   };
 
