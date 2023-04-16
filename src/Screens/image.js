@@ -1,8 +1,13 @@
-
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, Text } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import Button_1 from "../components/button1";
 
 const ImageScreen = () => {
+
+  const navigation = useNavigation();
+
+
   return (
     <View style={styles.container}>
       <Image
@@ -10,6 +15,21 @@ const ImageScreen = () => {
         resizeMode="contain"
         source={require("../../assets/chat1.png")}
       />
+      <View style={{width: '100%'}}>
+        <View style={styles.container1} >   
+          <Button_1 
+            onPress={ () => navigation.navigate("login")}
+            title={'Login'} 
+          />
+        </View>
+        <View style={styles.container1} >   
+          <Button_1
+             onPress={ () => navigation.navigate("signUp")}
+            title={'signUp'} 
+          />
+        </View>
+
+      </View>
     </View>
   );
 };
@@ -17,13 +37,19 @@ const ImageScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    flexDirection: 'column',
+    justifyContent: "space-around",
     alignItems: "center",
+    backgroundColor: '#ffffff'
+  },
+  container1:{
+    width: '100%',
+    paddingTop: '5%',
+    paddingHorizontal: '10%'
   },
   image: {
-    width: "100%",
-    height: 900,
-    resizeMode: "cover",
+    width: "90%",
+    height: "40%",
   },
 });
 
