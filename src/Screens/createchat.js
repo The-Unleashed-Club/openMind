@@ -3,10 +3,11 @@ import {
   SafeAreaView,
   StyleSheet,
   TextInput,
-  Button,
+  ScrollView,
   Text,
   View,
 } from "react-native";
+import Button_1 from "../components/button1";
 
 const CreateChat = () => {
   const [inputText, setInputText] = useState("");
@@ -59,18 +60,41 @@ const CreateChat = () => {
 
   return (
     <View style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <TextInput
-          style={styles.input}
-          onChangeText={handleInputChange}
-          value={inputText}
-          placeholder="Enter a message"
-        />
-        <Button title="Submit" onPress={handleChatSubmit} />
-        {responseText !== "" && (
-          <Text style={styles.responseText}>Response: {responseText}</Text>
-        )}
-      </SafeAreaView>
+      
+
+      <ScrollView >
+
+        <View style={styles.container1} >
+          {responseText !== "" && (
+            <Text style={styles.responseText}>Response: {responseText}</Text>
+          )}
+        </View>
+
+        <View style={styles.container2}>
+
+          <TextInput
+            style={styles.input}
+            onChangeText={handleInputChange}
+            value={inputText}
+            placeholder="Enter a message"
+            placeholderTextColor={'#ffffff'}
+
+            
+          />
+
+        <View style={styles.container3} >
+          <Button_1 title="Submit" onPress={handleChatSubmit} />
+        </View>
+
+
+        </View>
+      </ScrollView>
+
+
+
+
+       
+     
     </View>
   );
 };
@@ -78,22 +102,46 @@ const CreateChat = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    flexDirection: 'column',
+    justifyContent: "space-between",
     alignItems: "center",
-    justifyContent: "center",
+    paddingHorizontal: "8%",
+    paddingTop: "12%",
+    backgroundColor: "#ffffff",
+  },
+  container1:{
+    width: "100%",
+    paddingTop: "40%",
+  },
+  container2:{
+    width: "100%",
+    paddingVertical:"50%"
+
+  },
+  container3:{
+    width: "100%",
+    // paddingVertical:"2%"
   },
   safeArea: {
     width: "100%",
     padding: 16,
   },
   input: {
-    height: 40,
-    margin: 12,
+    width: "100%",
     borderWidth: 1,
-    padding: 10,
+    borderColor: "#ccc",
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    marginBottom: 16,
+    borderRadius: 4,
+    backgroundColor: "#224957",
+    fontSize: 18,
+    color: "#ffffff",
   },
   responseText: {
-    margin: 15,
+    paddingHorizontal: '8%',
+    fontSize: 18,
+    color: "#224957"
   },
 });
 
