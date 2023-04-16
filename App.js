@@ -1,19 +1,5 @@
+import { getApp, initializeApp } from 'firebase/app';
 
-import { StyleSheet, Text, Image ,View} from 'react-native';
-import Login from "./src/Screens/login";
-import ImageScreen from './src/Screens/image';
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { initializeApp } from 'firebase/app';
-
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyBS1fCY-_I-V4WZYveOTNmx9ByGDRaCW70",
   authDomain: "pre-phrase.firebaseapp.com",
@@ -24,9 +10,19 @@ const firebaseConfig = {
   measurementId: "G-1EJ9733JN2"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+try {
+  initializeApp(firebaseConfig);
+} catch (err) {
+  // we skip the “already exists” message which is
+  // not an actual error when we’re hot-reloading
+  if (!getApp.length) {
+    console.error("Firebase initialization error raised", err.stack);
+  }
+}
+
+const app = initializeApp(firebaseConfig)
+
+console.log(app);
 
 import Home from "./src/navigation/navigation";
 

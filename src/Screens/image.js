@@ -8,7 +8,7 @@ const ImageScreen = () => {
       <Image
         style={styles.image}
         resizeMode="contain"
-        source={require("../assets/chat1.png")}
+        source={require("../../assets/chat1.png")}
       />
     </View>
   );
