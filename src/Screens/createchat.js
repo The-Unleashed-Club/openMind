@@ -1,22 +1,27 @@
-import React, { useState } from "react";
+ import React, { useState } from "react";
 import {
-  SafeAreaView,
+  ActivityIndicator,
   StyleSheet,
   TextInput,
-  Button,
+  ScrollView,
   Text,
+  View,
 } from "react-native";
+import Button_1 from "../components/button1";
 
 const CreateChat = () => {
   const [inputText, setInputText] = useState("");
   const [responseText, setResponseText] = useState("");
+  const [responseRecieve, setresponseRecieve] = useState(false);
 
   const handleInputChange = (text) => {
     setInputText(text);
   };
 
   const handleChatSubmit = async () => {
+    setresponseRecieve(true)
     if (inputText === "") {
+      setresponseRecieve(false);
       return;
     }
 
@@ -46,6 +51,7 @@ const CreateChat = () => {
         json.choices[0].message.content
       ) {
         setResponseText(json.choices[0].message.content);
+        setresponseRecieve(false)
       } else {
         console.error("Invalid response format:", json);
       }
@@ -57,30 +63,97 @@ const CreateChat = () => {
   };
 
   return (
-    <SafeAreaView>
-      <TextInput
-        style={styles.input}
-        onChangeText={handleInputChange}
-        value={inputText}
-        placeholder="Enter a message"
-      />
-      <Button title="Submit" onPress={handleChatSubmit} />
-      {responseText !== "" && (
-        <Text style={styles.responseText}>Response: {responseText}</Text>
-      )}
-    </SafeAreaView>
+    <View style={styles.container}>
+      
+
+      <ScrollView style={{width: '100%'}} >
+
+        <View style={styles.container1} >
+          { responseText !== "" && (
+            <Text style={styles.responseText}>Response: {responseText}</Text>
+          )}
+        </View>
+
+        { responseRecieve == true ? (
+            <ActivityIndicator size="large" color="#20DF7F" />
+        ) : (
+          <View />
+        )}
+
+        
+
+        <View style={styles.container2}>
+
+          <TextInput
+            style={styles.input}
+            onChangeText={handleInputChange}
+            value={inputText}
+            placeholder="Enter a message"
+            placeholderTextColor={'#ffffff'}
+
+            
+          />
+
+        <View style={styles.container3} >
+          <Button_1 title="Submit" onPress={handleChatSubmit} />
+        </View>
+
+
+        </View>
+      </ScrollView>
+
+
+
+
+       
+     
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: "8%",
+    paddingTop: "12%",
+    backgroundColor: "#ffffff",
+  },
+  container1:{
+    width: "100%",
+    paddingTop: "40%",
+  },
+  container2:{
+    width: "100%",
+    paddingVertical:"50%"
+
+  },
+  container3:{
+    width: "100%",
+    // paddingVertical:"2%"
+  },
+  safeArea: {
+    width: "100%",
+    padding: 16,
+  },
   input: {
-    height: 40,
-    margin: 12,
+    width: "100%",
     borderWidth: 1,
-    padding: 10,
+    borderColor: "#ccc",
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    marginBottom: 16,
+    borderRadius: 4,
+    backgroundColor: "#224957",
+    fontSize: 18,
+    color: "#ffffff",
   },
   responseText: {
-    margin: 15,
+    paddingHorizontal: '8%',
+    fontSize: 18,
+    color: "#224957"
   },
 });
 
