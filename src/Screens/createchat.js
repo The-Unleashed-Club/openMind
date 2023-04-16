@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+ import React, { useState } from "react";
 import {
   SafeAreaView,
   StyleSheet,
   TextInput,
   Button,
   Text,
+  View,
 } from "react-native";
 
 const CreateChat = () => {
@@ -57,22 +58,34 @@ const CreateChat = () => {
   };
 
   return (
-    <SafeAreaView>
-      <TextInput
-        style={styles.input}
-        onChangeText={handleInputChange}
-        value={inputText}
-        placeholder="Enter a message"
-      />
-      <Button title="Submit" onPress={handleChatSubmit} />
-      {responseText !== "" && (
-        <Text style={styles.responseText}>Response: {responseText}</Text>
-      )}
-    </SafeAreaView>
+    <View style={styles.container}>
+      <SafeAreaView style={styles.safeArea}>
+        <TextInput
+          style={styles.input}
+          onChangeText={handleInputChange}
+          value={inputText}
+          placeholder="Enter a message"
+        />
+        <Button title="Submit" onPress={handleChatSubmit} />
+        {responseText !== "" && (
+          <Text style={styles.responseText}>Response: {responseText}</Text>
+        )}
+      </SafeAreaView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  safeArea: {
+    width: "100%",
+    padding: 16,
+  },
   input: {
     height: 40,
     margin: 12,
