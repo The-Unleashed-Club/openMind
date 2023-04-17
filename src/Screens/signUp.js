@@ -1,17 +1,10 @@
 import React from "react";
 import { View, TextInput, Button, StyleSheet, Text, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword   } from "firebase/auth";
+import { auth , createUserWithEmailAndPassword } from '../firebase/firebase-utilities';
 import Button_1 from "../components/button1"
 import firebaseConfig from "../firebase/firebaseConfig";
 
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
-// Initialize Firebase Authentication and get a reference to the service
-const auth = getAuth(app);
 
 const SignUp = () => {
   const [email, setEmail] = React.useState("");
