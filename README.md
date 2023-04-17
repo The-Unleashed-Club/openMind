@@ -1,5 +1,7 @@
 # PicPhrase
 
+Innovative Conversations: Powered by OpenAI's Cutting-edge API.
+
 ## ScreenShot
 <img src="https://user-images.githubusercontent.com/46851135/232449785-1c9789b2-f99e-4c3f-86e2-f53697bc8b28.jpg"  width="300" >
 
@@ -14,17 +16,38 @@
 
 ## What it does
  It gets Instant Responses to Your Messages in Real-time
+ 
+ ## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/silenteyesoncode/PicPhrase.git
+```
+
+Go to the project directory
+
+```bash
+  cd {projectNAme}
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
+
+ 
 ## How we built it
 - We set react native project with expo CLI.
 - WE done authentication using Firebase.
 - We integrated OpenAI API to generate the responses.
-## Challenges we ran into
--We face challenges in the authentication ,integrating the api and in the styling of the application.
-## Accomplishments that we're proud of
-- we have completed the app. 
-## What we learned
-- Authentication using firebase
-- React Native
--Integrating the OpenAI API
+
 ## What's next for PicPhrase
 We are going to create a useful chat applications in which two people can chat using the open AI.
