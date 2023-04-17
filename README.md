@@ -1,5 +1,9 @@
 # PicPhrase
- 
+
+## ScreenShot
+<img src="https://user-images.githubusercontent.com/46851135/232449785-1c9789b2-f99e-4c3f-86e2-f53697bc8b28.jpg"  width="300" >
+
+
  ## Inspiration
 - "Revolutionizing Conversations: Creating a Chat App that Responds Smartly using OpenAI's Language Technology."
 - "Enhancing User Experience: Building a Chat App with Advanced Language Capabilities from OpenAI API."
