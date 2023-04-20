@@ -9,6 +9,7 @@ import Login from "../Screens/login";
 import SignUp from "../Screens/signUp";
 import ImageScreen from '../Screens/image';
 import CreateChat from '../Screens/createchat';
+import Choice from '../Screens/choice';
 
 
 
@@ -33,6 +34,7 @@ const Stack = createStackNavigator();
       <Stack.Navigator screenOptions={{ headerShown: false }} >
         <Stack.Screen name="CreateChat" component={CreateChat} />
         <Stack.Screen name="ImageScreen" component={ImageScreen} />
+        <Stack.Screen name="choice" component={Choice} />
       </Stack.Navigator>
 
   );
