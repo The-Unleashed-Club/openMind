@@ -25,5 +25,7 @@ export  {
   auth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged
+  onAuthStateChanged,
+  collection, 
+  addDoc
 }
