@@ -21,6 +21,7 @@ const Stack = createStackNavigator();
   return (
 
       <Stack.Navigator screenOptions={{ headerShown: false }} >
+        <Stack.Screen name="ImageScreen" component={ImageScreen} />
         <Stack.Screen name="login" component={Login} />
         <Stack.Screen name="signUp" component={SignUp} />
       </Stack.Navigator>
@@ -32,9 +33,9 @@ const Stack = createStackNavigator();
   return (
 
       <Stack.Navigator screenOptions={{ headerShown: false }} >
-        <Stack.Screen name="CreateChat" component={CreateChat} />
-        <Stack.Screen name="ImageScreen" component={ImageScreen} />
         <Stack.Screen name="choice" component={Choice} />
+        <Stack.Screen name="CreateChat" component={CreateChat} />
+
       </Stack.Navigator>
 
   );
