@@ -22,7 +22,7 @@ const SignUp = () => {
           // Signed in 
           const user = userCredential.user;
           // console.log("Signed Un", user);
-          navigation.navigate("CreateChat");
+         
           // ...
         })
         .catch((error) => {
