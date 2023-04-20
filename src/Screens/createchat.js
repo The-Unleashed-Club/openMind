@@ -8,6 +8,7 @@ import {
   View,
 } from "react-native";
 import Button_1 from "../components/button1";
+import { auth, collection, addDoc  } from "../firebase/firebase-utilities";
 
 const CreateChat = () => {
   const [inputText, setInputText] = useState("");
@@ -25,23 +26,22 @@ const CreateChat = () => {
       return;
     }
 
-    const options = {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        "X-RapidAPI-Key": "673f8f817cmsh332d89277fd83b7p1e7383jsnd9d06adb3202",
-        "X-RapidAPI-Host": "openai80.p.rapidapi.com",
-      },
-      body: JSON.stringify({
-        model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: inputText }],
-      }),
-    };
 
     try {
       const response = await fetch(
         "https://openai80.p.rapidapi.com/chat/completions",
-        options
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            "X-RapidAPI-Key": "673f8f817cmsh332d89277fd83b7p1e7383jsnd9d06adb3202",
+            "X-RapidAPI-Host": "openai80.p.rapidapi.com",
+          },
+          body: JSON.stringify({
+            model: "gpt-3.5-turbo",
+            messages: [{ role: "user", content: inputText }],
+          }),
+        }
       );
       const json = await response.json();
       if (
