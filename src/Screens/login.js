@@ -1,7 +1,7 @@
 import React from "react";
 import { View, TextInput, Button, StyleSheet, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { auth, signInWithEmailAndPassword   } from "../firebase/firebase-utilities";
+import { auth, signInWithEmailAndPassword , onAuthStateChanged   } from "../firebase/firebase-utilities";
 import Button_1 from "../components/button1"
 
 
@@ -19,14 +19,18 @@ const SignIn = () => {
         // Signed in 
         const user = userCredential.user;
         // console.log("Signed Un", user);
-        navigation.navigate("CreateChat");
+        // navigation.navigate("CreateChat");
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
+        console.log(error.messa);
+        // const errorMessage = error.message;
         // ..
     });
+
+
+
     
   };
 
