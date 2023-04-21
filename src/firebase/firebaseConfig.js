@@ -3,6 +3,7 @@
 export default firebaseConfig = {
   apiKey: "AIzaSyBS1fCY-_I-V4WZYveOTNmx9ByGDRaCW70",
   authDomain: "pre-phrase.firebaseapp.com",
+  databaseURL: "https://pre-phrase-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "pre-phrase",
   storageBucket: "pre-phrase.appspot.com",
   messagingSenderId: "531222180809",
