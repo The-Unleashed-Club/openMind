@@ -1,17 +1,10 @@
 import React from "react";
 import { View, TextInput, Button, StyleSheet, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword   } from "firebase/auth";
+import { auth, signInWithEmailAndPassword , onAuthStateChanged   } from "../firebase/firebase-utilities";
 import Button_1 from "../components/button1"
-import firebaseConfig from "../firebase/firebaseConfig";
 
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-
-// Initialize Firebase Authentication and get a reference to the service
-const auth = getAuth(app);
 
 const SignIn = () => {
   const [email, setEmail] = React.useState("");
@@ -19,22 +12,25 @@ const SignIn = () => {
   const navigation = useNavigation();
 
   const handleSignIn = () => {
-    // console.log("Username:", username);
-    // console.log("Password:", password);
+
 
     signInWithEmailAndPassword (auth, email, password)
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
         // console.log("Signed Un", user);
-        navigation.navigate("CreateChat");
+        // navigation.navigate("CreateChat");
         // ...
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
+        console.log(error.messa);
+        // const errorMessage = error.message;
         // ..
     });
+
+
+
     
   };
 
