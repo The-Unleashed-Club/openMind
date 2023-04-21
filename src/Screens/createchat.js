@@ -8,7 +8,7 @@ import {
   View,
 } from "react-native";
 import Button_1 from "../components/button1";
-import { auth, collection, addDoc  } from "../firebase/firebase-utilities";
+import { db, collection, addDoc  } from "../firebase/firebase-utilities";
 
 const CreateChat = () => {
   const [inputText, setInputText] = useState("");
@@ -25,6 +25,7 @@ const CreateChat = () => {
       setresponseRecieve(false);
       return;
     }
+   
 
 
     try {
@@ -52,6 +53,18 @@ const CreateChat = () => {
       ) {
         setResponseText(json.choices[0].message.content);
         setresponseRecieve(false)
+
+        /////// Making Collection ////////
+          try {
+            const docRef = await addDoc(collection(db, "conversation"), {
+              response:  responseText
+            });
+            console.log("Document written with ID: ", docRef.id);
+          } catch (e) {
+            console.error("Error adding document: ", e);
+          }
+        /////// Making Collection ////////
+
       } else {
         console.error("Invalid response format:", json);
       }

@@ -23,6 +23,7 @@ const db = getFirestore(app);
 
 export  {
   auth,
+  db,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
