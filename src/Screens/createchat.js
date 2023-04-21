@@ -1,4 +1,4 @@
- import React, { useState } from "react";
+import React, { useState } from "react";
 import {
   ActivityIndicator,
   StyleSheet,
@@ -19,7 +19,7 @@ const CreateChat = () => {
   };
 
   const handleChatSubmit = async () => {
-    setresponseRecieve(true)
+    setresponseRecieve(true);
     if (inputText === "") {
       setresponseRecieve(false);
       return;
@@ -51,7 +51,7 @@ const CreateChat = () => {
         json.choices[0].message.content
       ) {
         setResponseText(json.choices[0].message.content);
-        setresponseRecieve(false)
+        setresponseRecieve(false);
       } else {
         console.error("Invalid response format:", json);
       }
@@ -64,49 +64,33 @@ const CreateChat = () => {
 
   return (
     <View style={styles.container}>
-      
-
-      <ScrollView style={{width: '100%'}} >
-
-        <View style={styles.container1} >
-          { responseText !== "" && (
+      <ScrollView style={{ width: "100%" }}>
+        <View style={styles.container1}>
+          {responseText !== "" && (
             <Text style={styles.responseText}>Response: {responseText}</Text>
           )}
         </View>
 
-        { responseRecieve == true ? (
-            <ActivityIndicator size="large" color="#20DF7F" />
+        {responseRecieve == true ? (
+          <ActivityIndicator size="large" color="#20DF7F" />
         ) : (
           <View />
         )}
 
-        
-
         <View style={styles.container2}>
-
           <TextInput
             style={styles.input}
             onChangeText={handleInputChange}
             value={inputText}
             placeholder="Enter a message"
-            placeholderTextColor={'#ffffff'}
-
-            
+            placeholderTextColor={"#ffffff"}
           />
 
-        <View style={styles.container3} >
-          <Button_1 title="Submit" onPress={handleChatSubmit} />
-        </View>
-
-
+          <View style={styles.container3}>
+            <Button_1 title="Submit" onPress={handleChatSubmit} />
+          </View>
         </View>
       </ScrollView>
-
-
-
-
-       
-     
     </View>
   );
 };
@@ -114,23 +98,22 @@ const CreateChat = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: "8%",
     paddingTop: "12%",
     backgroundColor: "#ffffff",
   },
-  container1:{
+  container1: {
     width: "100%",
     paddingTop: "40%",
   },
-  container2:{
+  container2: {
     width: "100%",
-    paddingVertical:"50%"
-
+    paddingVertical: "50%",
   },
-  container3:{
+  container3: {
     width: "100%",
     // paddingVertical:"2%"
   },
@@ -151,9 +134,9 @@ const styles = StyleSheet.create({
     color: "#ffffff",
   },
   responseText: {
-    paddingHorizontal: '8%',
+    paddingHorizontal: "8%",
     fontSize: 18,
-    color: "#224957"
+    color: "#224957",
   },
 });
 

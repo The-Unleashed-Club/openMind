@@ -8,6 +8,7 @@ import SignUp from "../Screens/signUp";
 import ImageScreen from '../Screens/image';
 import CreateChat from '../Screens/createchat';
 import Choice from '../Screens/choice';
+import CreateImage from '../Screens/createimage';
 const Stack = createStackNavigator();
 
 
@@ -20,6 +21,7 @@ export default function Home() {
         <Stack.Screen name="signUp" component={SignUp} />
         <Stack.Screen name="CreateChat" component={CreateChat} />
         <Stack.Screen name="Choice" component={Choice} />
+        <Stack.Screen name="CreateImage" component={CreateImage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
