@@ -1,6 +1,6 @@
 import { getApp, initializeApp } from 'firebase/app';
 import firebaseConfig from './src/firebase/firebaseConfig';
-
+import Home from "./src/navigation/navigation";
 
 try {
   initializeApp(firebaseConfig);
@@ -16,7 +16,7 @@ const app = initializeApp(firebaseConfig)
 
 // console.log(app);
 
-import Home from "./src/navigation/navigation";
+
 
 
 
