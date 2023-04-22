@@ -14,11 +14,6 @@ try {
 
 const app = initializeApp(firebaseConfig)
 
-// console.log(app);
-
-
-
-
 
 export default function App() {
   return <Home />
