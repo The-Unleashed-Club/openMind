@@ -22,7 +22,7 @@ const Choice = () => {
         </View>
         <View style={styles.container1}>
           <Button_1
-            // onPress={() => navigation.navigate("createimage")}
+            onPress={() => navigation.navigate("createimage")}
             title={"Image"}
           />
         </View>
