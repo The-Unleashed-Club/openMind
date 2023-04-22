@@ -2,9 +2,29 @@ import React from "react";
 import { View, StyleSheet, Image, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Button_1 from "../components/button1";
+import { db, collection, addDoc  } from "../firebase/firebase-utilities";
 
 const Choice = () => {
   const navigation = useNavigation();
+
+  const handleChatSubmit = async () => {
+
+    /////// Making Collection ////////
+     try {
+        const docRef = await addDoc(collection(db, "conversation"), {
+          first: "Aapka Naam",
+          inputText: "",
+          message: "Hi"
+        });
+
+        console.log("Document written with ID: ", docRef.id);
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    /////// Making Collection ////////
+
+    navigation.navigate("createChat")
+  }
 
   return (
     <View style={styles.container}>
@@ -16,7 +36,7 @@ const Choice = () => {
       <View style={{ width: "100%" }}>
         <View style={styles.container1}>
           <Button_1
-            onPress={() => navigation.navigate("CreateChat")}
+            onPress={handleChatSubmit }
             title={"Text"}
           />
         </View>

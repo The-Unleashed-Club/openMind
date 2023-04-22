@@ -1,9 +1,8 @@
-import { initializeApp } from "firebase/app";
+import { getApp, initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword ,signInWithEmailAndPassword , onAuthStateChanged  } from "firebase/auth";
 import { getDatabase } from "firebase/database";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc , setDoc , doc , getDoc , getDocs } from "firebase/firestore";
 import firebaseConfig from "../firebase/firebaseConfig";
-
 
 
 // Initialize Firebase
@@ -20,13 +19,16 @@ const database = getDatabase(app);
 const db = getFirestore(app);
 
 
-
 export  {
   auth,
   db,
+  getDoc,
+  getDocs,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
   collection, 
-  addDoc
+  addDoc,
+  setDoc,
+  doc
 }
