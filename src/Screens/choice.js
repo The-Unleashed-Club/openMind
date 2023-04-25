@@ -26,6 +26,23 @@ const Choice = () => {
     navigation.navigate("createChat")
   }
 
+
+///collection for images///
+ const handleImageSubmit = async () => {
+   try {
+     const docRef = await addDoc(collection(db, "images"), {
+       image: "url_to_image",
+     });
+
+     console.log("Document written with ID: ", docRef.id);
+   } catch (e) {
+     console.error("Error adding document: ", e);
+   }
+
+   navigation.navigate("createimage");
+ };
+///collection for images///
+
   return (
     <View style={styles.container}>
       <Image
@@ -35,16 +52,10 @@ const Choice = () => {
       />
       <View style={{ width: "100%" }}>
         <View style={styles.container1}>
-          <Button_1
-            onPress={handleChatSubmit }
-            title={"Text"}
-          />
+          <Button_1 onPress={handleChatSubmit} title={"Text"} />
         </View>
         <View style={styles.container1}>
-          <Button_1
-            onPress={() => navigation.navigate("createimage")}
-            title={"Image"}
-          />
+          <Button_1 onPress={handleImageSubmit} title={"Image"} />
         </View>
       </View>
     </View>
