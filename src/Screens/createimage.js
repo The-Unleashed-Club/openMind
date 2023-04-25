@@ -8,6 +8,13 @@ import {
   Image,
   StyleSheet,
 } from "react-native";
+import {
+  db,
+  collection,
+  addDoc,
+  doc,
+  getDocs,
+} from "../firebase/firebase-utilities";
 
 const API_KEY = "673f8f817cmsh332d89277fd83b7p1e7383jsnd9d06adb3202";
 const API_HOST = "openai80.p.rapidapi.com";
@@ -15,6 +22,19 @@ const API_HOST = "openai80.p.rapidapi.com";
 const CreateImage = () => {
   const [prompt, setPrompt] = useState("");
   const [images, setImages] = useState([]);
+
+  //collection//
+const addImageDataToFirestore = async (imageUrl) => {
+  try {
+    const docRef = await addDoc(collection(db, "images"), {
+      imageUrl: imageUrl
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+};
+//collection//
 
   const generateImages = async () => {
     const options = {
@@ -38,10 +58,14 @@ const CreateImage = () => {
       );
       const json = await response.json();
       setImages(json.data);
+      json.data.forEach((image) => {
+        addImageDataToFirestore(image.url);
+      });
     } catch (error) {
       console.error(error);
     }
   };
+
 
   return (
     <View style={styles.container}>
@@ -98,3 +122,17 @@ const styles = StyleSheet.create({
 });
 
 export default CreateImage;
+
+
+
+
+
+
+
+
+
+
+
+
+
+

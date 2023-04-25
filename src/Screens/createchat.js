@@ -8,7 +8,7 @@ import {
   View,
 } from "react-native";
 import Button_1 from "../components/button1";
-import { auth, collection, addDoc  } from "../firebase/firebase-utilities";
+import { db, collection, addDoc, doc, getDocs } from "../firebase/firebase-utilities";
 
 const CreateChat = () => {
   const [inputText, setInputText] = useState("");
@@ -20,11 +20,21 @@ const CreateChat = () => {
   };
 
   const handleChatSubmit = async () => {
-    setresponseRecieve(true);
+    // setresponseRecieve(true);
     if (inputText === "") {
       setresponseRecieve(false);
       return;
     }
+  
+
+
+    // const querySnapshot = await getDocs(collection(db, "conversation"));
+    
+    // querySnapshot.forEach((doc) => {
+    //   setResponseText(responseText + doc.data().message)
+    //   console.log(doc.id, " => ", doc.data().message);
+    // });
+   
 
 
     try {
@@ -51,7 +61,23 @@ const CreateChat = () => {
         json.choices[0].message.content
       ) {
         setResponseText(json.choices[0].message.content);
-        setresponseRecieve(false);
+        setresponseRecieve(false)
+
+        /////// Updating Collection ////////
+          try {
+            const docRef = await addDoc(collection(db, "conversation"), {
+              first: "Alan",
+              last: "Mathison",
+              message: inputText
+            });
+
+            console.log("Document written with ID: ", docRef.id);
+          } catch (e) {
+            console.error("Error adding document: ", e);
+          }
+        ///// Updating Collection ////////
+
+   
       } else {
         console.error("Invalid response format:", json);
       }
@@ -69,15 +95,14 @@ const CreateChat = () => {
           {responseText !== "" && (
             <Text style={styles.responseText}>Response: {responseText}</Text>
           )}
+
+          
         </View>
 
         {responseRecieve == true ? (
           <ActivityIndicator size="large" color="#20DF7F" />
         ) : (
-          <View />
-        )}
-
-        <View style={styles.container2}>
+          <View style={styles.container2}>
           <TextInput
             style={styles.input}
             onChangeText={handleInputChange}
@@ -90,6 +115,9 @@ const CreateChat = () => {
             <Button_1 title="Submit" onPress={handleChatSubmit} />
           </View>
         </View>
+        )}
+
+        
       </ScrollView>
     </View>
   );

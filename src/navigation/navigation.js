@@ -35,7 +35,7 @@ const Stack = createStackNavigator();
 
       <Stack.Navigator screenOptions={{ headerShown: false }} >
         <Stack.Screen name="choice" component={Choice} />
-        <Stack.Screen name="CreateChat" component={CreateChat} />
+        <Stack.Screen name="createChat" component={CreateChat} />
         <Stack.Screen name="createimage" component={CreateImage} />
 
       </Stack.Navigator>
@@ -68,9 +68,22 @@ export default function Home() {
 
 }, []);
 
+
+  //////  Comment Below stack for Development Mode /////
+  //////  UnComment Below stack for Production Mode /////
+  // return (
+  //   <NavigationContainer>
+  //      { user == true ? <AppScreens /> : <AuthScreens />}
+  //   </NavigationContainer>
+  // );
+
+  
+
+    ///  {/* Developent Mode  */}  ///
+    ///  {/* UnComment below Stack for App */}  ///
   return (
     <NavigationContainer>
-       { user == true ? <AppScreens /> : <AuthScreens />}
+       <AppScreens />
     </NavigationContainer>
   );
 }
