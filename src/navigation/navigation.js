@@ -12,6 +12,7 @@ import CreateChat from '../Screens/createchat';
 import Choice from '../Screens/choice';
 import CreateImage from '../Screens/createimage';
 import SocketChat from '../Screens/socket-client';
+import JoinScreen from '../Screens/join';
 
 
 
@@ -39,6 +40,7 @@ const Stack = createStackNavigator();
         <Stack.Screen name="createChat" component={CreateChat} />
         <Stack.Screen name="createimage" component={CreateImage} />
         <Stack.Screen name="socketChat" component={SocketChat} />
+        <Stack.Screen name="joinScreen" component={JoinScreen} />
 
       </Stack.Navigator>
 

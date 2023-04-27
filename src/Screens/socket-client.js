@@ -24,6 +24,11 @@ const  SocketChat = () => {
     setRecvMessages(prevState => GiftedChat.append(prevState, messages));
   };
 
+  const joinChat = username => {
+    socket.current.emit("join", username);
+    setHasJoined(true);
+  };
+
 
 
   return (
