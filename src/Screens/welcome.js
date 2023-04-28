@@ -3,7 +3,7 @@ import { View, StyleSheet, Image, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Button_1 from "../components/button1";
 
-const ImageScreen = () => {
+const Welcome_screen = () => {
 
   const navigation = useNavigation();
 
@@ -53,4 +53,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ImageScreen;
+export default Welcome_screen;

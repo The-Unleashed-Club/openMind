@@ -7,7 +7,7 @@ import { auth , onAuthStateChanged   } from "../firebase/firebase-utilities";
 
 import Login from "../Screens/login";
 import SignUp from "../Screens/signUp";
-import ImageScreen from '../Screens/image';
+import Welcome_screen from '../Screens/welcome';
 import CreateChat from '../Screens/createchat';
 import Choice from '../Screens/choice';
 import CreateImage from '../Screens/createimage';
@@ -24,7 +24,7 @@ const Stack = createStackNavigator();
   return (
 
       <Stack.Navigator screenOptions={{ headerShown: false }} >
-        <Stack.Screen name="ImageScreen" component={ImageScreen} />
+        <Stack.Screen name="welcome_screen" component={Welcome_screen} />
         <Stack.Screen name="login" component={Login} />
         <Stack.Screen name="signUp" component={SignUp} />
       </Stack.Navigator>
