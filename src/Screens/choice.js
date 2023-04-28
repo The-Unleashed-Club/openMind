@@ -9,21 +9,21 @@ const Choice = () => {
 
   const handleChatSubmit = async () => {
 
-    /////// Making Collection ////////
-     try {
-        const docRef = await addDoc(collection(db, "conversation"), {
-          first: "Aapka Naam",
-          inputText: "",
-          message: "Hi"
-        });
+    // /////// Making Collection ////////
+    //  try {
+    //     const docRef = await addDoc(collection(db, "conversation"), {
+    //       first: "Aapka Naam",
+    //       inputText: "",
+    //       message: "Hi"
+    //     });
 
-        console.log("Document written with ID: ", docRef.id);
-      } catch (e) {
-        console.error("Error adding document: ", e);
-      }
-    /////// Making Collection ////////
+    //     console.log("Document written with ID: ", docRef.id);
+    //   } catch (e) {
+    //     console.error("Error adding document: ", e);
+    //   }
+    // /////// Making Collection ////////
 
-    navigation.navigate("createChat")
+    navigation.navigate("socketChat")
   }
 
 

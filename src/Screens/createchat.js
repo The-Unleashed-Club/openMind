@@ -4,15 +4,27 @@ import {
   StyleSheet,
   TextInput,
   ScrollView,
+  KeyboardAvoidingView,
+  FlatList,
   Text,
   View,
 } from "react-native";
-import Button_1 from "../components/button1";
+import { Response_Item , Button_1 , colors } from "../components/export";
 import { db, collection, addDoc, doc, getDocs } from "../firebase/firebase-utilities";
 
-const CreateChat = () => {
+const DATA = [
+  {
+    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    title: 'How Can i help you today?',
+  },
+
+];
+
+
+const CreateChat = props => {
+
   const [inputText, setInputText] = useState("");
-  const [responseText, setResponseText] = useState("");
+  const [responseText, setResponseText] = useState([]);
   const [responseRecieve, setresponseRecieve] = useState(false);
 
   const handleInputChange = (text) => {
@@ -20,13 +32,14 @@ const CreateChat = () => {
   };
 
   const handleChatSubmit = async () => {
+
     setresponseRecieve(true);
     
     if (inputText === "") {
       setresponseRecieve(false);
       return;
     }
-  
+    const stringID = Math.random().toString(36).substring(2,7);
 
 
     // const querySnapshot = await getDocs(collection(db, "conversation"));
@@ -35,8 +48,13 @@ const CreateChat = () => {
     //   setResponseText(responseText + doc.data().message)
     //   console.log(doc.id, " => ", doc.data().message);
     // });
-   
 
+    // DATA.unshift(
+    //   {
+    //     id: stringID,
+    //     title: inputText
+    //   });
+   
 
     try {
       const response = await fetch(
@@ -61,23 +79,27 @@ const CreateChat = () => {
         json.choices[0].message &&
         json.choices[0].message.content
       ) {
-        setResponseText(json.choices[0].message.content);
+        DATA.unshift(
+          {
+            id: stringID,
+            title: json.choices[0].message.content
+          });
+        // setResponseText(json.choices[0].message.content);
         setresponseRecieve(false)
 
-        /////// Updating Collection ////////
-          try {
-            const docRef = await addDoc(collection(db, "conversation"), {
-              first: "Alan",
-              last: "Mathison",
-              message: inputText
-            });
+        // /////// Updating Collection ////////
+        //   try {
+        //     const docRef = await addDoc(collection(db, "conversation"), {
+        //       first: "Alan",
+        //       last: "Mathison",
+        //       message: inputText
+        //     });
 
-            console.log("Document written with ID: ", docRef.id);
-          } catch (e) {
-            console.error("Error adding document: ", e);
-          }
-        ///// Updating Collection ////////
-
+        //     console.log("Document written with ID: ", docRef.id);
+        //   } catch (e) {
+        //     console.error("Error adding document: ", e);
+        //   }
+        // ///// Updating Collection ////////
    
       } else {
         console.error("Invalid response format:", json);
@@ -86,40 +108,41 @@ const CreateChat = () => {
       console.error(error);
     }
 
+    // console.log(DATA);
     setInputText("");
   };
 
   return (
     <View style={styles.container}>
-      <ScrollView style={{ width: "100%" }}>
-        <View style={styles.container1}>
-          {responseText !== "" && (
-            <Text style={styles.responseText}>Response: {responseText}</Text>
-          )}
-
-          
-        </View>
+      <View style={styles.container1} >
+          <FlatList
+              data={DATA}
+              renderItem={({item}) => <Response_Item title={item.title} />}
+              keyExtractor={item => item.id}
+            />
+      </View>
 
         {responseRecieve == true ? (
           <ActivityIndicator size="large" color="#20DF7F" />
         ) : (
           <View style={styles.container2}>
-          <TextInput
-            style={styles.input}
-            onChangeText={handleInputChange}
-            value={inputText}
-            placeholder="Enter a message"
-            placeholderTextColor={"#ffffff"}
-          />
+            <TextInput
+              style={styles.input}
+              onChangeText={handleInputChange}
+              value={inputText}
+              placeholder="Enter a message"
+              placeholderTextColor={"#ffffff"}
+            />
 
-          <View style={styles.container3}>
-            <Button_1 title="Submit" onPress={handleChatSubmit} />
-          </View>
+            <View style={styles.container3}>
+              <Button_1 title="Sent" onPress={handleChatSubmit} />
+            </View>
+            
         </View>
         )}
-
+       {/* {Platform.OS === "android" && <KeyboardAvoidingView behavior="padding" />} */}
         
-      </ScrollView>
+      {/* </ScrollView> */}
     </View>
   );
 };
@@ -130,26 +153,25 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: "8%",
+    paddingHorizontal: "3.5%",
     paddingTop: "12%",
-    backgroundColor: "#ffffff",
+    backgroundColor: colors.backgroundColor,
   },
   container1: {
     width: "100%",
-    paddingTop: "40%",
+    height: "70%",
+    // backgroundColor: colors.test2
+
   },
   container2: {
     width: "100%",
-    paddingVertical: "50%",
+    paddingBottom: '15%',
+    // backgroundColor: colors.test5
   },
   container3: {
     width: "100%",
-    // paddingVertical:"2%"
   },
-  safeArea: {
-    width: "100%",
-    padding: 16,
-  },
+
   input: {
     width: "100%",
     borderWidth: 1,
@@ -158,14 +180,14 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     marginBottom: 16,
     borderRadius: 4,
-    backgroundColor: "#224957",
+    backgroundColor: colors.darkGrey,
     fontSize: 18,
-    color: "#ffffff",
+    color: colors.white,
   },
   responseText: {
     paddingHorizontal: "8%",
     fontSize: 18,
-    color: "#224957",
+    color: colors.darkGrey,
   },
 });
 
