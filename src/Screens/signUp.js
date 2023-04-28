@@ -15,6 +15,7 @@ const SignUp = () => {
   const [RePassword, setRePassword] = React.useState("");
   const [name, setName] = React.useState("");
   const navigation = useNavigation();
+  
   const handleSignUp = async () => {
     if (password != RePassword) {
       Alert.alert("Password Do not match, please try again");

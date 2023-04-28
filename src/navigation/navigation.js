@@ -11,7 +11,7 @@ import ImageScreen from '../Screens/image';
 import CreateChat from '../Screens/createchat';
 import Choice from '../Screens/choice';
 import CreateImage from '../Screens/createimage';
-
+import ChatListScreen from '../Screens/chatlist';
 
 
 
@@ -32,14 +32,12 @@ const Stack = createStackNavigator();
 
  function AppScreens() {
   return (
-
-      <Stack.Navigator screenOptions={{ headerShown: false }} >
-        <Stack.Screen name="choice" component={Choice} />
-        <Stack.Screen name="createChat" component={CreateChat} />
-        <Stack.Screen name="createimage" component={CreateImage} />
-
-      </Stack.Navigator>
-
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="ChatListScreen" component={ChatListScreen} />
+      <Stack.Screen name="choice" component={Choice} />
+      <Stack.Screen name="createChat" component={CreateChat} />
+      <Stack.Screen name="createimage" component={CreateImage} />
+    </Stack.Navigator>
   );
  }
 
@@ -71,9 +69,9 @@ export default function Home() {
 
   //////  Comment Below stack for Development Mode /////
   //////  UnComment Below stack for Production Mode /////
-  return (
+ return (
  <NavigationContainer>
-       { user == true ? <AppScreens /> : <AuthScreens />}
+     { user == true ? <AppScreens /> : <AuthScreens />}
    </NavigationContainer>
    );
 
