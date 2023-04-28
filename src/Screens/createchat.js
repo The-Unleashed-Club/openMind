@@ -20,7 +20,8 @@ const CreateChat = () => {
   };
 
   const handleChatSubmit = async () => {
-    // setresponseRecieve(true);
+    setresponseRecieve(true);
+    
     if (inputText === "") {
       setresponseRecieve(false);
       return;
