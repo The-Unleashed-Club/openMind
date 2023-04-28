@@ -24,7 +24,6 @@ const DATA = [
 const CreateChat = props => {
 
   const [inputText, setInputText] = useState("");
-  const [responseText, setResponseText] = useState([]);
   const [responseRecieve, setresponseRecieve] = useState(false);
 
   const handleInputChange = (text) => {
@@ -84,7 +83,6 @@ const CreateChat = props => {
             id: stringID,
             title: json.choices[0].message.content
           });
-        // setResponseText(json.choices[0].message.content);
         setresponseRecieve(false)
 
         // /////// Updating Collection ////////
