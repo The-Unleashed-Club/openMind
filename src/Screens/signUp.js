@@ -1,77 +1,81 @@
 import React from "react";
 import { View, TextInput, Button, StyleSheet, Text, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { auth , createUserWithEmailAndPassword } from '../firebase/firebase-utilities';
-import Button_1 from "../components/button1"
+import {
+  auth,
+  createUserWithEmailAndPassword,
+} from "../firebase/firebase-utilities";
+import Button_1 from "../components/button1";
 import firebaseConfig from "../firebase/firebaseConfig";
-
+import { db, collection, addDoc } from "../firebase/firebase-utilities";
 
 const SignUp = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [RePassword, setRePassword] = React.useState("");
+  const [name, setName] = React.useState("");
   const navigation = useNavigation();
-
-  const handleSignUp = () => {
-
-    if (password != RePassword ) {
-      Alert.alert("Password Do not match, please try again")
-    }else{
-      createUserWithEmailAndPassword (auth, email, password)
-        .then((userCredential) => {
-          // Signed in 
-          const user = userCredential.user;
-          // console.log("Signed Un", user);
-         
-          // ...
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // ..
-      });
+  
+  const handleSignUp = async () => {
+    if (password != RePassword) {
+      Alert.alert("Password Do not match, please try again");
+    } else {
+      try {
+        const docRef = await addDoc(collection(db, "users"), {
+          name: name,
+          email: email,
+          password: password,
+        });
+        console.log("Document written with ID: ", docRef.id);
+        
+      } catch (error) {
+        console.error("Error adding document: ", error);
+      }
     }
-
-    
   };
 
   return (
     <View style={styles.container}>
-
       <View style={styles.container1}>
         <Text style={styles.SignUpLabel}>SignUp</Text>
       </View>
 
-      <View style={{width: '100%'}} >
-          <TextInput
-            style={styles.input}
-            placeholder="Email"
-            placeholderTextColor={'#ffffff'}
-            value={email}
-            onChangeText={setEmail}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Password"
-            placeholderTextColor={'#ffffff'}
-            secureTextEntry
-            value={password}
-            onChangeText={setPassword}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Retype Password"
-            placeholderTextColor={'#ffffff'}
-            secureTextEntry
-            value={RePassword}
-            onChangeText={setRePassword}
-          />
+      <View style={{ width: "100%" }}>
+        <TextInput
+          style={styles.input}
+          placeholder="Name"
+          placeholderTextColor={"#ffffff"}
+          value={name}
+          onChangeText={setName}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          placeholderTextColor={"#ffffff"}
+          value={email}
+          onChangeText={setEmail}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          placeholderTextColor={"#ffffff"}
+          secureTextEntry
+          value={password}
+          onChangeText={setPassword}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Retype Password"
+          placeholderTextColor={"#ffffff"}
+          secureTextEntry
+          value={RePassword}
+          onChangeText={setRePassword}
+        />
       </View>
 
-      <View style={styles.container2} >
+      <View style={styles.container2}>
         <Button_1 title="SignUp" onPress={handleSignUp} />
       </View>
-
     </View>
   );
 };
@@ -82,19 +86,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: "10%",
-    backgroundColor: '#ffffff'
+    backgroundColor: "#ffffff",
   },
-  container1:{
+  container1: {
     width: "100%",
     justifyContent: "center",
-    alignItems: 'center',
+    alignItems: "center",
     alignSelf: "center",
   },
-  container2:{
+  container2: {
     width: "100%",
     justifyContent: "center",
-    alignItems: 'center',
-    top: "6%"
+    alignItems: "center",
+    top: "6%",
   },
   SignUpLabel: {
     fontSize: 50,
