@@ -23,7 +23,7 @@ const Choice = () => {
     //   }
     // /////// Making Collection ////////
 
-    navigation.navigate("joinScreen")
+    navigation.navigate("socketChat")
   }
 
   return (

@@ -1,22 +1,22 @@
 let currentMessageId = 1;
 
-function createMessage(userId, messageText) {
+function createMessage(user, messageText) {
   return {
     _id: currentMessageId++,
     text: messageText,
     createdAt: new Date(),
     user: {
-      _id: userId,
-      name: "Test User",
-      avatar: "https://placeimg.com/140/140/any"
+      _id: user.userId,
+      name: user.username,
+      avatar: user.avatar
     }
   };
 }
 
-function handleMessage(socket, userIds) {
+function handleMessage(socket, users) {
   socket.on("message", messageText => {
-    const userId = userIds[socket.id];
-    const message = createMessage(userId, messageText);
+    const user = users[socket.id];
+    const message = createMessage(user, messageText);
     console.log(message);
     socket.broadcast.emit("message", message);
   });
