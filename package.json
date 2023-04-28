@@ -12,6 +12,8 @@
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/stack": "^6.3.16",
+    "@rneui/base": "^4.0.0-rc.7",
+    "@rneui/themed": "^4.0.0-rc.7",
     "expo": "~48.0.11",
     "expo-status-bar": "~1.4.4",
     "firebase": "^9.20.0",
@@ -20,8 +22,9 @@
     "react-native-gesture-handler": "~2.9.0",
     "react-native-gifted-chat": "^2.0.1",
     "react-native-reanimated": "~2.14.4",
-    "react-native-safe-area-context": "4.5.0",
+    "react-native-safe-area-context": "^4.5.1",
     "react-native-screens": "~3.20.0",
+    "react-native-vector-icons": "^9.2.0",
     "socket.io-client": "^4.6.1"
   },
   "devDependencies": {

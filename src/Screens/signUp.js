@@ -16,20 +16,30 @@ const SignUp = () => {
   const [name, setName] = React.useState("");
   const navigation = useNavigation();
   
-  const handleSignUp = async () => {
+  const handleSignUp = () => {
     if (password != RePassword) {
       Alert.alert("Password Do not match, please try again");
     } else {
+
       try {
-        const docRef = await addDoc(collection(db, "users"), {
-          name: name,
-          email: email,
-          password: password,
-        });
-        console.log("Document written with ID: ", docRef.id);
-        
+        createUserWithEmailAndPassword (auth, email, password)
+        .then( async (userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          const docRef = await addDoc(collection(db, "users"), {
+            name: name,
+            email: email,
+            password: password,
+          });
+          console.log("Document written with ID: ", docRef.id);
+        }).catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode , errorMessage);
+
+      });
       } catch (error) {
-        console.error("Error adding document: ", error);
+        console.error("Error", error);
       }
     }
   };

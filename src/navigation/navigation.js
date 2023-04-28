@@ -70,13 +70,13 @@ export default function Home() {
 }, []);
 
 
-  //////  Comment Below stack for Development Mode /////
-  //////  UnComment Below stack for Production Mode /////
-//  return (
-//  <NavigationContainer>
-//      { user == true ? <AppScreens /> : <AuthScreens />}
-//    </NavigationContainer>
-//    );
+  ////  Comment Below stack for Development Mode /////
+  ////  UnComment Below stack for Production Mode /////
+ return (
+ <NavigationContainer>
+     { user == true ? <AppScreens /> : <AuthScreens />}
+   </NavigationContainer>
+   );
 
   
 
