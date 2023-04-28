@@ -20,7 +20,8 @@ const CreateChat = () => {
   };
 
   const handleChatSubmit = async () => {
-    // setresponseRecieve(true);
+    setresponseRecieve(true);
+    
     if (inputText === "") {
       setresponseRecieve(false);
       return;
@@ -44,7 +45,7 @@ const CreateChat = () => {
           method: "POST",
           headers: {
             "content-type": "application/json",
-            "X-RapidAPI-Key": "673f8f817cmsh332d89277fd83b7p1e7383jsnd9d06adb3202",
+            "X-RapidAPI-Key": "525dd849e4msh114d97f8b5be502p15edc0jsn0846420c16a0",
             "X-RapidAPI-Host": "openai80.p.rapidapi.com",
           },
           body: JSON.stringify({

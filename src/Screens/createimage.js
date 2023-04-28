@@ -23,19 +23,6 @@ const CreateImage = () => {
   const [prompt, setPrompt] = useState("");
   const [images, setImages] = useState([]);
 
-  //collection//
-const addImageDataToFirestore = async (imageUrl) => {
-  try {
-    const docRef = await addDoc(collection(db, "images"), {
-      imageUrl: imageUrl
-    });
-    console.log("Document written with ID: ", docRef.id);
-  } catch (e) {
-    console.error("Error adding document: ", e);
-  }
-};
-//collection//
-
   const generateImages = async () => {
     const options = {
       method: "POST",
@@ -58,14 +45,20 @@ const addImageDataToFirestore = async (imageUrl) => {
       );
       const json = await response.json();
       setImages(json.data);
-      json.data.forEach((image) => {
-        addImageDataToFirestore(image.url);
+      json.data.forEach(async (image) => {
+        try {
+          const docRef = await addDoc(collection(db, "images"), {
+            imageUrl: image.url,
+          });
+          console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
       });
     } catch (error) {
       console.error(error);
     }
   };
-
 
   return (
     <View style={styles.container}>
