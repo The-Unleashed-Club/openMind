@@ -18,6 +18,7 @@ const ChatListScreen = ({ navigation }) => {
       const conversations = [];
       querySnapshot.forEach((doc) => {
         conversations.push({ id: doc.id, ...doc.data() });
+        // console.log(doc.id);
       });
       setChatList(conversations);
     };
@@ -30,14 +31,14 @@ const ChatListScreen = ({ navigation }) => {
     return (
       <TouchableOpacity
         style={styles.chatContainer}
-        onPress={() => navigation.navigate("Chat", { id, chatName })}
+        onPress={() => navigation.navigate("choice", { id, chatName })}
       >
         <Image
           source={{ uri: "https://via.placeholder.com/150" }}
           style={styles.chatAvatar}
         />
         <View style={styles.chatInfo}>
-          <Text style={styles.chatName}>{chatName}</Text>
+          <Text style={styles.chatName}>{name}</Text>
           <Text style={styles.chatLastMessage}>{lastMessage}</Text>
         </View>
       </TouchableOpacity>
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    paddingTop: 20,
+    paddingTop: "10%",
   },
   header: {
     height: 60,
