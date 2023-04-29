@@ -13,7 +13,7 @@ const Welcome_screen = () => {
       <Image
         style={styles.image}
         resizeMode="contain"
-        source={require("../../assets/chat1.png")}
+        source={require("../../assets/illus2.jpg")}
       />
       <View style={{width: '100%'}}>
         <View style={styles.container1} >   

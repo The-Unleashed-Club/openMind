@@ -48,7 +48,7 @@ const Choice = () => {
       <Image
         style={styles.image}
         resizeMode="contain"
-        source={require("../../assets/choice.jpg")}
+        source={require("../../assets/aibot_one.png")}
       />
       <View style={{ width: "100%" }}>
         <View style={styles.container1}>
@@ -76,8 +76,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: "10%",
   },
   image: {
-    width: "90%",
-    height: "40%",
+    width: "100%",
+    height: "50%",
   },
 });
 

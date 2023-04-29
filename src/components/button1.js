@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   button1: {
     paddingVertical: "5.4%",
     borderRadius: 35,
-    backgroundColor: '#20DF7F',
+    backgroundColor: '#a8a3e3',
     alignItems :'center',
     justifyContent : 'center',
     
