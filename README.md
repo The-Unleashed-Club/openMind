@@ -60,5 +60,18 @@ Start the server
 - WE done authentication using Firebase.
 - We integrated OpenAI API to generate the responses.
 
+# Contribution Guidelines
+
+We welcome and appreciate contributions from the community! Here are the steps to follow to contribute to this project:
+
+1. Fork the repository
+2. Clone the forked repository to your local machine
+3. Create a new branch for your changes
+4. Make the necessary changes in your branch
+5. Commit your changes and push them to your forked repository
+6. Create a pull request from your forked repository to the original repository
+7. Wait for the maintainers to review and approve your changes
+
+
 ## What's next for PicPhrase
 We are going to create a useful chat applications in which two people can chat using the open AI.
