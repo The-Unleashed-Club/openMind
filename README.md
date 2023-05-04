@@ -62,6 +62,7 @@ Start the server
 
 # Contribution Guidelines
 
+[Please check out the the guidelines here](Contributing.md)
 We welcome and appreciate contributions from the community! Here are the steps to follow to contribute to this project:
 
 1. Fork the repository
