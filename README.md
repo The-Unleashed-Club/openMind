@@ -2,6 +2,8 @@
 
 Innovative Conversations: Powered by OpenAI's Cutting-edge API.
 
+Our Vision 
+
 [![Watch the video](http://i3.ytimg.com/vi/_1YkhggKChk/hqdefault.jpg)](https://youtu.be/_1YkhggKChk)
 
 
