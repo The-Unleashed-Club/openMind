@@ -17,7 +17,7 @@ There are a few ways you can contribute to this project:
    - **Clone the repository:** Next, clone the repository to your local machine using Git. You can do this by running the following command in your terminal:
 
      ```
-     git clone https://github.com/your-username/repository-name.git
+     git clone https://github.com/silenteyesoncode/PicPhrase.git
      ```
 
      Replace "your-username" with your GitHub username and "repository-name" with the name of the repository you forked.
