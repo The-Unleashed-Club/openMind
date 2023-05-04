@@ -1,4 +1,4 @@
-# Contributing to [Project Name]
+# Contributing to PicPhrase
 
 Thank you for considering contributing to [Project Name]! This README provides some guidelines to help you get started.
 
