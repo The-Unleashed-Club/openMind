@@ -1,7 +1,7 @@
 # OpenMind
 
 Innovative Conversations: Powered by OpenAI's Cutting-edge API. 
-The App give instant Responses to Your Messages in Real-time. App aslo can create original, realistic images and art from a text description. It can combine concepts, attributes, and styles which is powered by open-AI. We are using RapidAPI services to fullfill our requirements 
+The App give instant Responses to Your Messages in Real-time. App aslo can create original, realistic images and art from a text description. It can combine concepts, attributes, and styles which is powered by open-AI. We are using RapidAPI services to fullfill our requirements. We are also wokring on cross-site conversation between different users where our app can give you professional suggestions to your messages, email etc.  
 
 
 ### Our vision
