@@ -33,13 +33,13 @@ Our Vision
 Clone the project
 
 ```bash
-  git clone https://github.com/silenteyesoncode/PicPhrase.git
+  git clone https://github.com/silenteyesoncode/openMind.git
 ```
 
 Go to the project directory
 
 ```bash
-  cd {projectNAme}
+  cd openMind
 ```
 
 Install dependencies
@@ -75,5 +75,5 @@ We welcome and appreciate contributions from the community! Here are the steps t
 7. Wait for the maintainers to review and approve your changes
 
 
-## What's next for PicPhrase
+## What's next for openMind
 We are going to create a useful chat applications in which two people can chat using the open AI.
