@@ -93,7 +93,7 @@ const SignUp = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "space-between",
     alignItems: "center",
     paddingHorizontal: "10%",
     backgroundColor: "#ffffff",
@@ -103,17 +103,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "center",
+    top: '10%',
+    // backgroundColor: "red",
   },
   container2: {
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
-    top: "6%",
+    bottom: '5%'
   },
   SignUpLabel: {
     fontSize: 50,
-    fontWeight: "bold",
     marginBottom: 24,
+    fontFamily: 'OpenSans_800ExtraBold',
     color: "#224957",
   },
   input: {
@@ -127,6 +129,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     backgroundColor: "#224957",
     fontSize: 18,
+    fontFamily: 'OpenSans_400Regular',
     color: "#ffffff",
   },
   forgotPassword: {

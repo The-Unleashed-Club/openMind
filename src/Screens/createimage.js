@@ -16,45 +16,35 @@ import {
   getDocs,
 } from "../firebase/firebase-utilities";
 
-const API_KEY = "673f8f817cmsh332d89277fd83b7p1e7383jsnd9d06adb3202";
-const API_HOST = "openai80.p.rapidapi.com";
+
 
 const CreateImage = () => {
   const [prompt, setPrompt] = useState("");
   const [images, setImages] = useState([]);
 
   const generateImages = async () => {
-    const options = {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        "X-RapidAPI-Key": API_KEY,
-        "X-RapidAPI-Host": API_HOST,
-      },
-      body: JSON.stringify({
-        prompt,
-        n: 2,
-        size: "1024x1024",
-      }),
-    };
+
 
     try {
       const response = await fetch(
         "https://openai80.p.rapidapi.com/images/generations",
-        options
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+            "X-RapidAPI-Key": "525dd849e4msh114d97f8b5be502p15edc0jsn0846420c16a0",
+            "X-RapidAPI-Host": "openai80.p.rapidapi.com",
+          },
+          body: JSON.stringify({
+            prompt,
+            n: 2,
+            size: "1024x1024",
+          }),
+        }
       );
       const json = await response.json();
       setImages(json.data);
-      json.data.forEach(async (image) => {
-        try {
-          const docRef = await addDoc(collection(db, "images"), {
-            imageUrl: image.url,
-          });
-          console.log("Document written with ID: ", docRef.id);
-        } catch (e) {
-          console.error("Error adding document: ", e);
-        }
-      });
+
     } catch (error) {
       console.error(error);
     }

@@ -158,6 +158,7 @@ const styles = StyleSheet.create({
   container1: {
     width: "100%",
     height: "70%",
+    fontFamily: 'OpenSans_400Regular',
     // backgroundColor: colors.test2
 
   },

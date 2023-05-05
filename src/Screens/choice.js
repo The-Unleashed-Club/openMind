@@ -23,25 +23,27 @@ const Choice = () => {
     //   }
     // /////// Making Collection ////////
 
-    navigation.navigate("socketChat")
+    navigation.navigate("createChat")
   }
 
 
-///collection for images///
- const handleImageSubmit = async () => {
-   try {
-     const docRef = await addDoc(collection(db, "images"), {
-       image: "url_to_image",
-     });
+  const handleImageSubmit = async () => {
 
-     console.log("Document written with ID: ", docRef.id);
-   } catch (e) {
-     console.error("Error adding document: ", e);
-   }
+
+  //  ///collection for images///
+  //   try {
+  //     const docRef = await addDoc(collection(db, "images"), {
+  //       image: "url_to_image",
+  //     });
+
+  //     console.log("Document written with ID: ", docRef.id);
+  //   } catch (e) {
+  //     console.error("Error adding document: ", e);
+  //   }
+  //  ///collection for images///
 
    navigation.navigate("createimage");
- };
-///collection for images///
+  };
 
   return (
     <View style={styles.container}>

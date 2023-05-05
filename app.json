@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "pic-phrase",
-    "slug": "pic-phrase",
+    "name": "openMind",
+    "slug": "openMind",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/chatbot.png",
+      "image": "./assets/choice.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

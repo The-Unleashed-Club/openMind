@@ -80,6 +80,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: 'center',
     alignSelf: "center",
+    paddingBottom: '20%',
+    bottom: '10%',
   },
   container2:{
     width: "100%",
@@ -89,9 +91,8 @@ const styles = StyleSheet.create({
   },
   SignInLabel: {
     fontSize: 50,
-    fontWeight: "bold",
-    marginBottom: 24,
     color: "#224957",
+    fontFamily: 'OpenSans_800ExtraBold'
   },
   input: {
     width: "100%",
@@ -104,6 +105,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     backgroundColor: "#224957",
     fontSize: 18,
+    fontFamily: 'OpenSans_400Regular',
     color: "#ffffff",
   },
   forgotPassword: {

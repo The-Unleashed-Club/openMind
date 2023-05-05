@@ -41,7 +41,11 @@ const Button_1 = props => {
         onPress={ props.onPress}
         disabled={props.disabled}
         >
-        <Text style={{  alignItems: 'center', fontSize:16, color: '#224957' }}>{props.title}</Text>
+        <Text style={{  
+          alignItems: 'center',
+          fontFamily: 'OpenSans_600SemiBold',
+         fontSize:16, color: '#ffffff' 
+         }}>{props.title}</Text>
       </Pressable>
     </Animated.View>
   )
@@ -55,7 +59,7 @@ const styles = StyleSheet.create({
   button1: {
     paddingVertical: "5.4%",
     borderRadius: 35,
-    backgroundColor: '#a8a3e3',
+    backgroundColor: '#431cf3',
     alignItems :'center',
     justifyContent : 'center',
     
