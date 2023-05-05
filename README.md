@@ -1,4 +1,4 @@
-# PicPhrase
+# OpenMind
 
 Innovative Conversations: Powered by OpenAI's Cutting-edge API.
 
