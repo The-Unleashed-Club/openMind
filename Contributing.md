@@ -52,6 +52,6 @@ There are a few ways you can contribute to this project:
 
 4. **Code style and conventions:** When contributing code to the project, please follow the project's existing code style and conventions. If you're not sure what these are, please review the project's documentation or ask a project maintainer for guidance.
 
-5. **Code of conduct:** As a contributor to this project, you are expected to follow the project's code of conduct. Please review the project's CODE_OF_CONDUCT.md file for more information.
+5. **Code of conduct:** As a contributor to this project, you are expected to follow the project's code of conduct. Please review the project's CODE_OF_CONDUCT.md(CODE_OF_CONDUCT.md) file for more information.
 
 6. **License:** By contributing to this project, you agree to license your contributions under the project's chosen license. Please review the project's LICENSE.md file for more information.
