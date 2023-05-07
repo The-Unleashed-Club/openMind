@@ -98,7 +98,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/silenteyesoncode"><img src="https://avatars.githubusercontent.com/u/46851135?v=4?s=100" width="100px;" alt="silenteyesoncode"/><br /><sub><b>silenteyesoncode</b></sub></a><br /><a href="#infra-silenteyesoncode" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/nandini25-ag"><img src="https://avatars.githubusercontent.com/u/64517220?v=4?s=100" width="100px;" alt="nandini agarwal"/><br /><sub><b>nandini agarwal</b></sub></a><br /><a href="#infra-nandini25-ag" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/nandini25-ag"><img src="https://avatars.githubusercontent.com/u/64517220?v=4?s=100" width="100px;" alt="nandini agarwal"/><br /><sub><b>nandini agarwal</b></sub></a><br /><a href="#infra-nandini25-ag" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/The-Unleashed-Club/openMind/commits?author=nandini25-ag" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
