@@ -1,4 +1,7 @@
 ![image](https://user-images.githubusercontent.com/46851135/236486477-fd94faaf-6efb-4559-8bb7-4d72adba25a7.svg)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # OpenMind
 
@@ -83,3 +86,25 @@ We welcome and appreciate contributions from the community! Here are the steps t
 
 ## What's next for openMind
 We are going to create a useful chat applications in which two people can chat using the open AI.
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/silenteyesoncode"><img src="https://avatars.githubusercontent.com/u/46851135?v=4?s=100" width="100px;" alt="silenteyesoncode"/><br /><sub><b>silenteyesoncode</b></sub></a><br /><a href="#infra-silenteyesoncode" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
