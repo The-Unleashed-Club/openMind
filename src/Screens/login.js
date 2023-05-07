@@ -3,6 +3,7 @@ import { View, TextInput, Button, StyleSheet, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { auth, signInWithEmailAndPassword , onAuthStateChanged   } from "../firebase/firebase-utilities";
 import Button_1 from "../components/button1"
+import Animated, { interpolate, useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated";
 
 
 
@@ -10,6 +11,29 @@ const SignIn = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const navigation = useNavigation();
+
+  const emailPosition = useSharedValue(1)
+  const passwordPosition = useSharedValue(1)
+
+  const emailAnimatedStyle = useAnimatedStyle(()=>{
+
+    const interpolationY = interpolate(emailPosition.value,[0,1],[-40,0])
+    const interpolationX = interpolate(emailPosition.value,[0,1],[-20,0])
+     return{
+       transform:[{translateY:withTiming(interpolationY,{duration:800})},{translateX:withTiming(interpolationX,{duration:800})}],
+       opacity: (email.length > 0 && (emailPosition.value == 1))?0:1
+     }
+  })
+
+  const passwordAnimatedStyle = useAnimatedStyle(()=>{
+    const interpolationY = interpolate(passwordPosition.value,[0,1],[-40,0])
+    const interpolationX = interpolate(passwordPosition.value,[0,1],[-18,0])
+     return{
+       transform:[{translateY:withTiming(interpolationY,{duration:800})},{translateX:withTiming(interpolationX,{duration:800})}],
+       opacity: (password.length > 0 && (passwordPosition.value == 1))?0:1
+     }
+  })
+
 
   const handleSignIn = () => {
 
@@ -36,33 +60,39 @@ const SignIn = () => {
 
   return (
     <View style={styles.container}>
-
       <View style={styles.container1}>
         <Text style={styles.SignInLabel}>SignIn</Text>
       </View>
 
-      <View style={{width: '100%'}} >
+      <View style={{ width: "100%" }}>
+        <View style={styles.input}>
+          <View style={[StyleSheet.absoluteFill, styles.labelTextContainer]}> 
+          <Animated.Text style={emailAnimatedStyle} >Email</Animated.Text>
+          </View>
           <TextInput
-            style={styles.input}
-            placeholder="Email"
-            placeholderTextColor={'#ffffff'}
             value={email}
             onChangeText={setEmail}
+            onFocus={()=>emailPosition.value =0}
+            onBlur={()=>emailPosition.value =1}
           />
+        </View>
+        <View style={styles.input}>
+        <View style={[StyleSheet.absoluteFill, styles.labelTextContainer]}> 
+          <Animated.Text style={passwordAnimatedStyle} >Password</Animated.Text>
+          </View>
           <TextInput
-            style={styles.input}
-            placeholder="Password"
-            placeholderTextColor={'#ffffff'}
             secureTextEntry
             value={password}
             onChangeText={setPassword}
+            onFocus={()=>passwordPosition.value =0}
+            onBlur={()=>passwordPosition.value =1}
           />
+        </View>
       </View>
 
-      <View style={styles.container2} >
+      <View style={styles.container2}>
         <Button_1 title="SignIn" onPress={handleSignIn} />
       </View>
-
     </View>
   );
 };
@@ -99,14 +129,13 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#ccc",
     borderRadius: 4,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
+    padding:20,
     marginBottom: 16,
     borderRadius: 12,
-    backgroundColor: "#224957",
     fontSize: 18,
     fontFamily: 'OpenSans_400Regular',
-    color: "#ffffff",
+    marginVertical:15,
+    justifyContent:'center'
   },
   forgotPassword: {
     marginTop: 16,
@@ -121,6 +150,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  labelTextContainer:{
+    justifyContent:'center',
+    paddingLeft:20
+  }
 });
 
 export default SignIn;
