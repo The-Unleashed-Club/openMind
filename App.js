@@ -3,6 +3,8 @@ import { getApp, initializeApp } from 'firebase/app';
 import firebaseConfig from './src/firebase/firebaseConfig';
 import Home from "./src/navigation/navigation";
 import AppLoading from 'expo-app-loading';
+import { Provider } from "react-redux";
+import store from "./src/state-managment/store";
 import Loading_Screen from './loading';
 import {
   useFonts,
@@ -63,7 +65,13 @@ export default function App() {
   if (!fontsLoaded) {
     return < Loading_Screen />;
   } else {
-    return <Home />
+    
+     // please check developer mode in navigation.js before continuing.
+    return (
+      <Provider store={store}>
+        <Home />
+      </Provider>
+    ); 
   }
 
 }

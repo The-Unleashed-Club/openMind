@@ -1,7 +1,9 @@
 import React from "react";
 import { View, TextInput, Button, StyleSheet, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
 import { auth, signInWithEmailAndPassword , onAuthStateChanged   } from "../firebase/firebase-utilities";
+import { setLoading, setUser } from "../state-managment/reducers";
 import Button_1 from "../components/button1"
 
 
@@ -9,29 +11,27 @@ import Button_1 from "../components/button1"
 const SignIn = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+
+  const dispatch = useDispatch();
   const navigation = useNavigation();
 
   const handleSignIn = () => {
+    // Dispatch setLoading action with true to show the loading screen
+    dispatch(setLoading(true));
 
-
-    signInWithEmailAndPassword (auth, email, password)
+    signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        // console.log("Signed Un", user);
-        // navigation.navigate("CreateChat");
-        // ...
+        let user = userCredential.user;
+        // Dispatch setUser action with the user data to update the user state
+        dispatch(setUser(user));
+        
       })
       .catch((error) => {
-        const errorCode = error.code;
-        console.log(error.messa);
-        // const errorMessage = error.message;
-        // ..
-    });
-
-
-
-    
+        // Handle error
+        console.log(error.message);
+        dispatch(setLoading(false));
+      })
+     
   };
 
   return (

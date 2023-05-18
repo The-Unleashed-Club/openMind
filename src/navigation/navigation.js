@@ -4,6 +4,10 @@ import { StyleSheet, Text, Image ,View} from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { auth , onAuthStateChanged   } from "../firebase/firebase-utilities";
+import { useDispatch, useSelector } from 'react-redux';
+import { setLoading, setUser } from '../state-managment/reducers';
+
+import Loading_Screen from '../../loading';
 
 import Login from "../Screens/login";
 import SignUp from "../Screens/signUp";
@@ -12,7 +16,6 @@ import CreateChat from '../Screens/createchat';
 import Choice from '../Screens/choice';
 import CreateImage from '../Screens/createimage';
 import SocketChat from '../Screens/socket-client';
-
 import ChatListScreen from '../Screens/chatlist';
 
 
@@ -35,7 +38,7 @@ const Stack = createStackNavigator();
  function AppScreens() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {/* <Stack.Screen name="chatListScreen" component={ChatListScreen} /> */}
+      <Stack.Screen name="chatListScreen" component={ChatListScreen} />
       <Stack.Screen name="choice" component={Choice} />
       <Stack.Screen name="createChat" component={CreateChat} />
       <Stack.Screen name="createimage" component={CreateImage} />
@@ -48,35 +51,36 @@ const Stack = createStackNavigator();
 
 export default function Home() {
 
-  const [ user, setUser ] = useState(false);
+  const dispatch = useDispatch();
+  const [user, setUser] = useState(false);
+  const isLoading = useSelector((state) => state.isLoading);
 
   useEffect(() => {
-        
-      const redirect = onAuthStateChanged(auth, (user) => {
-        if (user) {
+    const redirect = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        console.log(user);
+        setUser(true);
+        dispatch(setLoading(false));
+      } else {
+        dispatch(setUser(null));
+        setUser(false);
+      }
+    });
 
-          console.log( "user", user);
-          setUser(true)
-  
-        } else {
-          // User is signed out
-          // ...
-          setUser(false)
-        }
-      });
-
-      return redirect;
-
-}, []);
+    return redirect;
+  }, []);
 
 
   ////  Comment Below stack for Development Mode /////
   ////  UnComment Below stack for Production Mode /////
- return (
- <NavigationContainer>
-     { user == true ? <AppScreens /> : <AuthScreens />}
-   </NavigationContainer>
-   );
+
+      return (
+        <NavigationContainer>
+          {isLoading ? (
+            <Loading_Screen />
+          ) : user ? ( <AppScreens />) : ( <AuthScreens />)}
+        </NavigationContainer>
+        );
 
   
 
