@@ -5,7 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { auth , onAuthStateChanged   } from "../firebase/firebase-utilities";
 import { useDispatch, useSelector } from 'react-redux';
-import { setLoading, setUser } from '../state-managment/reducers';
+import { setLoading } from '../state-managment/reducers';
 
 import Loading_Screen from '../../loading';
 
@@ -52,18 +52,18 @@ const Stack = createStackNavigator();
 export default function Home() {
 
   const dispatch = useDispatch();
-  const [user, setUser] = useState(false);
+  const [user, isUser] = useState(false);
   const isLoading = useSelector((state) => state.isLoading);
 
   useEffect(() => {
     const redirect = onAuthStateChanged(auth, (user) => {
       if (user) {
         console.log(user);
-        setUser(true);
+        isUser(true);
         dispatch(setLoading(false));
       } else {
-        dispatch(setUser(null));
-        setUser(false);
+        dispatch(isUser(null));
+        isUser(false);
       }
     });
 
