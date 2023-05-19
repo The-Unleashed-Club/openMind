@@ -6,6 +6,8 @@ import {
   createUserWithEmailAndPassword,
 } from "../firebase/firebase-utilities";
 import Button_1 from "../components/button1";
+import { setLoading, setUser } from "../state-managment/reducers";
+import { useDispatch } from "react-redux";
 import firebaseConfig from "../firebase/firebaseConfig";
 import { db, collection, addDoc } from "../firebase/firebase-utilities";
 
@@ -14,32 +16,34 @@ const SignUp = () => {
   const [password, setPassword] = React.useState("");
   const [RePassword, setRePassword] = React.useState("");
   const [name, setName] = React.useState("");
+  const dispatch = useDispatch();
   const navigation = useNavigation();
-  
+
   const handleSignUp = () => {
     if (password != RePassword) {
       Alert.alert("Password Do not match, please try again");
     } else {
-
+      dispatch(setLoading(true));
       try {
-        createUserWithEmailAndPassword (auth, email, password)
-        .then( async (userCredential) => {
-          // Signed in 
-          const user = userCredential.user;
-          const docRef = await addDoc(collection(db, "users"), {
-            name: name,
-            email: email,
-            password: password,
+        createUserWithEmailAndPassword(auth, email, password)
+          .then(async (userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            const docRef = await addDoc(collection(db, "users"), {
+              name: name,
+              email: email,
+              password: password,
+            });
+            console.log("Document written with ID: ", docRef.id);
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage);
           });
-          console.log("Document written with ID: ", docRef.id);
-        }).catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorCode , errorMessage);
-
-      });
       } catch (error) {
         console.error("Error", error);
+        dispatch(setLoading(false));
       }
     }
   };
@@ -103,19 +107,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     alignSelf: "center",
-    top: '10%',
+    top: "10%",
     // backgroundColor: "red",
   },
   container2: {
     width: "100%",
     justifyContent: "center",
     alignItems: "center",
-    bottom: '5%'
+    bottom: "5%",
   },
   SignUpLabel: {
     fontSize: 50,
     marginBottom: 24,
-    fontFamily: 'OpenSans_800ExtraBold',
+    fontFamily: "OpenSans_800ExtraBold",
     color: "#224957",
   },
   input: {
@@ -129,7 +133,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     backgroundColor: "#224957",
     fontSize: 18,
-    fontFamily: 'OpenSans_400Regular',
+    fontFamily: "OpenSans_400Regular",
     color: "#ffffff",
   },
   forgotPassword: {
