@@ -55,3 +55,5 @@ There are a few ways you can contribute to this project:
 5. **Code of conduct:** As a contributor to this project, you are expected to follow the project's code of conduct. Please review the project's [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) file for more information.
 
 6. **License:** By contributing to this project, you agree to license your contributions under the project's chosen license. Please review the project's LICENSE.md file for more information.
+
+7. To facilitate the process, please note that you may be required to provide your email address in order to obtain access to Firebase. Please send an email to 7silenteyes07@gmail.com, as it will be needed for further assistance.
