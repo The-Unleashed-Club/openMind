@@ -48,7 +48,7 @@ const ChatListScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>Chats</Text>
+        <Text style={styles.headerText}>OpenMind Users </Text>
       </View>
       <FlatList
         data={chatList}

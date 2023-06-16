@@ -15,7 +15,7 @@ import Welcome_screen from '../Screens/welcome';
 import CreateChat from '../Screens/createchat';
 import Choice from '../Screens/choice';
 import CreateImage from '../Screens/createimage';
-import SocketChat from '../Screens/socket-client';
+import SocketChat from '../Screens/ChatClient';
 import ChatListScreen from '../Screens/chatlist';
 
 
