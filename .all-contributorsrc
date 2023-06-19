@@ -33,6 +33,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Coding-Algorithm",
+      "name": "Taofeek Ibrahim (CodingAlgorithm)",
+      "avatar_url": "https://avatars.githubusercontent.com/u/43940646?v=4",
+      "profile": "https://github.com/Coding-Algorithm",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -40,5 +49,6 @@
   "repoType": "github",
   "repoHost": "https://github.com",
   "projectName": "openMind",
-  "projectOwner": "The-Unleashed-Club"
+  "projectOwner": "The-Unleashed-Club",
+  "commitType": "docs"
 }
