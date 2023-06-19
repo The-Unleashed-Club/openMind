@@ -71,8 +71,8 @@ export default function Home() {
   }, []);
 
 
-  ////  Comment Below stack for Development Mode /////
-  ////  UnComment Below stack for Production Mode /////
+  //  Comment Below stack for Development Mode /////
+  //  UnComment Below stack for Production Mode /////
 
       return (
         <NavigationContainer>
