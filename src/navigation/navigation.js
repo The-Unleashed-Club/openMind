@@ -71,16 +71,16 @@ export default function Home() {
   }, []);
 
 
-  ////  Comment Below stack for Development Mode /////
-  ////  UnComment Below stack for Production Mode /////
+  //  Comment Below stack for Development Mode /////
+  //  UnComment Below stack for Production Mode /////
 
-      // return (
-      //   <NavigationContainer>
-      //     {isLoading ? (
-      //       <Loading_Screen />
-      //     ) : user ? ( <AppScreens />) : ( <AuthScreens />)}
-      //   </NavigationContainer>
-      //   );
+      return (
+        <NavigationContainer>
+          {isLoading ? (
+            <Loading_Screen />
+          ) : user ? ( <AppScreens />) : ( <AuthScreens />)}
+        </NavigationContainer>
+        );
 
   
 
