@@ -1,6 +1,6 @@
 ![image](https://user-images.githubusercontent.com/46851135/236486477-fd94faaf-6efb-4559-8bb7-4d72adba25a7.svg)
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # OpenMind
@@ -100,6 +100,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/silenteyesoncode"><img src="https://avatars.githubusercontent.com/u/46851135?v=4?s=100" width="100px;" alt="silenteyesoncode"/><br /><sub><b>silenteyesoncode</b></sub></a><br /><a href="#infra-silenteyesoncode" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/nandini25-ag"><img src="https://avatars.githubusercontent.com/u/64517220?v=4?s=100" width="100px;" alt="nandini agarwal"/><br /><sub><b>nandini agarwal</b></sub></a><br /><a href="#infra-nandini25-ag" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/The-Unleashed-Club/openMind/commits?author=nandini25-ag" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/mtalhabaig3"><img src="https://avatars.githubusercontent.com/u/57634631?v=4?s=100" width="100px;" alt="Muhammad Talha Baig"/><br /><sub><b>Muhammad Talha Baig</b></sub></a><br /><a href="https://github.com/The-Unleashed-Club/openMind/commits?author=mtalhabaig3" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Coding-Algorithm"><img src="https://avatars.githubusercontent.com/u/43940646?v=4?s=100" width="100px;" alt="Taofeek Ibrahim (CodingAlgorithm)"/><br /><sub><b>Taofeek Ibrahim (CodingAlgorithm)</b></sub></a><br /><a href="https://github.com/The-Unleashed-Club/openMind/commits?author=Coding-Algorithm" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
