@@ -48,7 +48,7 @@ There are a few ways you can contribute to this project:
 
      This will update your forked repository with your changes.
 
-   - **Create a pull request:** Finally, navigate to your forked repository on GitHub and click the "New pull request" button. This will open a page where you can create a new pull request to merge your changes into the original repository. Make sure to give your pull request a descriptive title and description explaining the changes you made.
+   - **Create a pull request:** Finally, navigate to your forked repository on GitHub and click the "New pull request" button. This will open a page where you can create a new pull request to merge your changes into the original repository. Make sure to give your pull request a descriptive title and description explaining the changes you made. *Also, ensure that you grant **edit access** to the maintainers of the project for your pull request, so they can review and merge your changes.*
 
 4. **Code style and conventions:** When contributing code to the project, please follow the project's existing code style and conventions. If you're not sure what these are, please review the project's documentation or ask a project maintainer for guidance.
 

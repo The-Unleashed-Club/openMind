@@ -74,21 +74,21 @@ export default function Home() {
   //  Comment Below stack for Development Mode /////
   //  UnComment Below stack for Production Mode /////
 
-      return (
-        <NavigationContainer>
-          {isLoading ? (
-            <Loading_Screen />
-          ) : user ? ( <AppScreens />) : ( <AuthScreens />)}
-        </NavigationContainer>
-        );
+    return (
+      <NavigationContainer>
+        {isLoading ? (
+          <Loading_Screen />
+        ) : user ? ( <AppScreens />) : ( <AuthScreens />)}
+      </NavigationContainer>
+    );
 
   
 
-    ///  {/* Developent Mode  */}  ///
-    ///  {/* UnComment below Stack for App */}  ///
-  return (
-    <NavigationContainer>
-       <AppScreens />
-    </NavigationContainer>
-  );
+  //   ///  {/* Developent Mode  */}  ///
+  //   ///  {/* UnComment below Stack for App */}  ///
+  // return (
+  //   <NavigationContainer>
+  //      <AppScreens />
+  //   </NavigationContainer>
+  // );
 }
