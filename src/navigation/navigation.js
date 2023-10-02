@@ -5,7 +5,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { auth , onAuthStateChanged   } from "../firebase/firebase-utilities";
 import { useDispatch, useSelector } from 'react-redux';
-import { setLoading } from '../state-managment/reducers';
+import { setLoading, setUser } from '../state-managment/reducers';
 
 import Loading_Screen from '../../loading';
 
@@ -62,7 +62,7 @@ export default function Home() {
         isUser(true);
         dispatch(setLoading(false));
       } else {
-        dispatch(isUser(null));
+        dispatch(setUser(null));
         isUser(false);
       }
     });
