@@ -133,7 +133,6 @@ export const SignupScreen = () => {
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
-
   );
 };
 
@@ -144,26 +143,5 @@ const styles = StyleSheet.create({
     paddingVertical: 75,
     paddingLeft: 24,
     paddingRight: 24,
-  },
-  container1: {
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-    alignSelf: "center",
-    top: "10%",
-  },
-  container2: {
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-    bottom: "5%",
-  },
-  Button: {
-    width: "100%",
-    height: 48,
-    borderRadius: 8,
-    backgroundColor: "#007AFF",
-    justifyContent: "center",
-    alignItems: "center",
-  },
+  }
 });
