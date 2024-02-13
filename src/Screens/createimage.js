@@ -1,20 +1,11 @@
 import React, { useState } from 'react';
 import {
   View,
-  Text,
   TextInput,
-  Button,
   ScrollView,
   Image,
   StyleSheet,
 } from 'react-native';
-import {
-  db,
-  collection,
-  addDoc,
-  doc,
-  getDocs,
-} from '../firebase/firebase-utilities';
 import colors from '../components/colors';
 import Button_1 from '../components/button1';
 import { calcHeight } from '../utility/utilities-funtions';

@@ -1,12 +1,12 @@
 import React, { useCallback } from "react";
 import { View, StyleSheet, Alert, KeyboardAvoidingView, Keyboard, Platform, TouchableWithoutFeedback } from "react-native";
-import {
-  auth,
-  createUserWithEmailAndPassword,
-} from "../firebase/firebase-utilities";
+
 import { setLoading } from "../state-managment/reducers";
 import { useDispatch } from "react-redux";
-import { db, collection, addDoc } from "../firebase/firebase-utilities";
+import {
+  db, collection, addDoc, auth,
+  createUserWithEmailAndPassword,
+} from "../firebase-utilities";
 import { TextInput } from "@/components/input/TextInput";
 import { useForm, SubmitHandler } from "react-hook-form"
 import { Text, Button } from "react-native-paper"

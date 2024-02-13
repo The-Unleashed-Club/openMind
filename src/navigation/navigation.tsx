@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { auth, onAuthStateChanged } from "../firebase/firebase-utilities";
+import { auth, onAuthStateChanged } from "../firebase-utilities";
 import { useDispatch, useSelector } from 'react-redux';
 import { setLoading } from '../state-managment/reducers';
 

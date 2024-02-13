@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { View, StyleSheet, Keyboard, KeyboardAvoidingView, Platform, TouchableWithoutFeedback } from "react-native";
 import { useDispatch } from "react-redux";
-import { auth, signInWithEmailAndPassword } from "../firebase/firebase-utilities";
+import { auth, signInWithEmailAndPassword } from "../firebase-utilities";
 import { setLoading, setUser } from "../state-managment/reducers";
 import { useForm, SubmitHandler } from "react-hook-form"
 import { Text, Button } from "react-native-paper"

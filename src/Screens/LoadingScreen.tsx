@@ -23,11 +23,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: '#000000'
   },
-  container1: {
-    width: '100%',
-    paddingTop: '5%',
-    paddingHorizontal: '10%'
-  },
   image: {
     width: "90%",
     height: "40%",

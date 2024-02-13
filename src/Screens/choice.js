@@ -1,8 +1,7 @@
 import React from "react";
-import { View, StyleSheet, Image, Text } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Button_1 from "../components/button1";
-import { db, collection, addDoc  } from "../firebase/firebase-utilities";
 
 const Choice = () => {
   const navigation = useNavigation();
@@ -30,19 +29,19 @@ const Choice = () => {
   const handleImageSubmit = async () => {
 
 
-  //  ///collection for images///
-  //   try {
-  //     const docRef = await addDoc(collection(db, "images"), {
-  //       image: "url_to_image",
-  //     });
+    //  ///collection for images///
+    //   try {
+    //     const docRef = await addDoc(collection(db, "images"), {
+    //       image: "url_to_image",
+    //     });
 
-  //     console.log("Document written with ID: ", docRef.id);
-  //   } catch (e) {
-  //     console.error("Error adding document: ", e);
-  //   }
-  //  ///collection for images///
+    //     console.log("Document written with ID: ", docRef.id);
+    //   } catch (e) {
+    //     console.error("Error adding document: ", e);
+    //   }
+    //  ///collection for images///
 
-   navigation.navigate("createimage");
+    navigation.navigate("createimage");
   };
 
   return (
