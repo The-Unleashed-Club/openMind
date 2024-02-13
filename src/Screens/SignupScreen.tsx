@@ -1,15 +1,15 @@
 import React, { useCallback } from "react";
-import { View, StyleSheet, Text, Alert, KeyboardAvoidingView, Keyboard, Platform, TouchableWithoutFeedback } from "react-native";
+import { View, StyleSheet, Alert, KeyboardAvoidingView, Keyboard, Platform, TouchableWithoutFeedback } from "react-native";
 import {
   auth,
   createUserWithEmailAndPassword,
 } from "../firebase/firebase-utilities";
-import Button_1 from "../components/button1";
 import { setLoading } from "../state-managment/reducers";
 import { useDispatch } from "react-redux";
 import { db, collection, addDoc } from "../firebase/firebase-utilities";
 import { TextInput } from "@/components/input/TextInput";
 import { useForm, SubmitHandler } from "react-hook-form"
+import { Text, Button } from "react-native-paper"
 
 type SignupFormData = {
   name: string;
@@ -82,11 +82,18 @@ export const SignupScreen = () => {
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.container}>
-          <View style={styles.container1}>
-            <Text style={styles.SignUpLabel}>SignUp</Text>
+          <View>
+            <Text style={{
+              fontSize: 36,
+              fontWeight: "bold"
+            }}>Let's Get Started!</Text>
+            <Text variant="bodySmall">We just need basic information to setup your account.</Text>
           </View>
 
-          <View style={{ width: "100%" }}>
+          <View style={{
+            marginVertical: 50,
+            gap: 8
+          }}>
             <TextInput control={control} name="name" label={"Your Name"} rules={{
               required: {
                 value: true,
@@ -116,9 +123,13 @@ export const SignupScreen = () => {
             }} />
           </View>
 
-          <View style={styles.container2}>
-            <Button_1 title="SignUp" onPress={handleSubmit(onSignupFormSubmit)} />
+          <View style={{
+            gap: 8
+          }}>
+            <Button mode="contained" onPress={handleSubmit(onSignupFormSubmit)} >Register</Button>
+            <Text variant="bodySmall">*Your personal information is encrypted before storing.</Text>
           </View>
+
         </View>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
@@ -129,10 +140,10 @@ export const SignupScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-between",
-    alignItems: "center",
-    paddingHorizontal: "10%",
-    backgroundColor: "#ffffff",
+    backgroundColor: "#EFF4FF",
+    paddingVertical: 75,
+    paddingLeft: 24,
+    paddingRight: 24,
   },
   container1: {
     width: "100%",
@@ -146,11 +157,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     bottom: "5%",
-  },
-  SignUpLabel: {
-    fontSize: 50,
-    marginBottom: 24,
-    color: "#224957",
   },
   Button: {
     width: "100%",
