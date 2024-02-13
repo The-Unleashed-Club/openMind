@@ -1,5 +1,5 @@
-import React from "react";
-import { View, TextInput, StyleSheet, Text, Alert } from "react-native";
+import React, { useCallback } from "react";
+import { View, StyleSheet, Text, Alert } from "react-native";
 import {
   auth,
   createUserWithEmailAndPassword,
@@ -8,8 +8,36 @@ import Button_1 from "../components/button1";
 import { setLoading } from "../state-managment/reducers";
 import { useDispatch } from "react-redux";
 import { db, collection, addDoc } from "../firebase/firebase-utilities";
+import { TextInput } from "@/components/input/TextInput";
+import { useForm } from "react-hook-form"
 
-const SignUp = () => {
+export const useSignupScreen = () => {
+  const dispatch = useDispatch();
+  const {
+    control,
+    handleSubmit,
+  } = useForm({
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+      rePassword: "",
+    },
+  })
+
+  const onSignupFormSubmit = useCallback(() => { }, [])
+
+  return {
+    control,
+    handleSubmit,
+    onSignupFormSubmit
+  }
+}
+
+export const SignupScreen = () => {
+  const { control,
+    handleSubmit,
+    onSignupFormSubmit } = useSignupScreen();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [RePassword, setRePassword] = React.useState("");
@@ -45,6 +73,7 @@ const SignUp = () => {
     }
   };
 
+
   return (
     <View style={styles.container}>
       <View style={styles.container1}>
@@ -52,40 +81,37 @@ const SignUp = () => {
       </View>
 
       <View style={{ width: "100%" }}>
-        <TextInput
-          style={styles.input}
-          placeholder="Name"
-          placeholderTextColor={"#ffffff"}
-          value={name}
-          onChangeText={setName}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Email"
-          placeholderTextColor={"#ffffff"}
-          value={email}
-          onChangeText={setEmail}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          placeholderTextColor={"#ffffff"}
-          secureTextEntry
-          value={password}
-          onChangeText={setPassword}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Retype Password"
-          placeholderTextColor={"#ffffff"}
-          secureTextEntry
-          value={RePassword}
-          onChangeText={setRePassword}
-        />
+        <TextInput control={control} name="name" label={"Your Name"} rules={{
+          required: {
+            value: true,
+            message: "Please enter your name",
+          },
+        }} />
+
+        <TextInput control={control} name="email" label={"Your Email"} rules={{
+          required: {
+            value: true,
+            message: "Please enter your email address",
+          },
+        }} />
+
+        <TextInput control={control} name="password" label={"Enter Password"} rules={{
+          required: {
+            value: true,
+            message: "Password is required",
+          },
+        }} />
+
+        <TextInput control={control} name="rePassword" label={"Re-enter Password"} rules={{
+          required: {
+            value: true,
+            message: "Please re-enter your password",
+          },
+        }} />
       </View>
 
       <View style={styles.container2}>
-        <Button_1 title="SignUp" onPress={handleSignUp} />
+        <Button_1 title="SignUp" onPress={handleSubmit(onSignupFormSubmit)} />
       </View>
     </View>
   );
@@ -119,20 +145,6 @@ const styles = StyleSheet.create({
     fontFamily: "OpenSans_800ExtraBold",
     color: "#224957",
   },
-  input: {
-    width: "100%",
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 4,
-    paddingHorizontal: 16,
-    paddingVertical: 12,
-    marginBottom: 16,
-    borderRadius: 12,
-    backgroundColor: "#224957",
-    fontSize: 18,
-    fontFamily: "OpenSans_400Regular",
-    color: "#ffffff",
-  },
   forgotPassword: {
     marginTop: 16,
     color: "#555",
@@ -147,5 +159,3 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
-
-export default SignUp;
