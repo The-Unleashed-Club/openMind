@@ -21,6 +21,7 @@ import {
   OpenSans_800ExtraBold_Italic,
 } from '@expo-google-fonts/open-sans';
 import { PaperProvider } from 'react-native-paper';
+import { MD3LightTheme as DefaultTheme } from 'react-native-paper';
 
 try {
   initializeApp(firebaseConfig);
@@ -57,6 +58,14 @@ export default function App() {
     OpenSans_800ExtraBold_Italic,
   });
 
+  const theme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      // Change the primary color of the app here at just one place.
+      primary: '#265CDF',
+    },
+  };
 
   if (!fontsLoaded) {
     return < LoadingScreen />;
@@ -65,7 +74,7 @@ export default function App() {
     // please check developer mode in navigation.js before continuing.
     return (
       <Provider store={store}>
-        <PaperProvider>
+        <PaperProvider theme={theme}>
           <Home />
         </PaperProvider>
       </Provider>
