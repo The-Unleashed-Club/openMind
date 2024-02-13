@@ -32,7 +32,7 @@ export const useSignupScreen = () => {
     },
   })
 
-  const onSignupFormSubmit: SubmitHandler<SignupFormData> = useCallback((data) => {
+  const onSignupFormSubmit: SubmitHandler<SignupFormData> = useCallback(async (data) => {
     const { name, email, password, rePassword } = data;
 
     if (password !== rePassword) {
@@ -40,28 +40,19 @@ export const useSignupScreen = () => {
     } else {
       dispatch(setLoading(true));
       try {
-        createUserWithEmailAndPassword(auth, email, password)
-          .then(async (userCredential) => {
-            // Signed in
-            const user = userCredential.user;
-            const docRef = await addDoc(collection(db, "users"), {
-              name: name,
-              email: email,
-              password: password,
-            });
-            console.log("Document written with ID: ", docRef.id);
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
-          });
+        await createUserWithEmailAndPassword(auth, email, password);
+        const docRef = await addDoc(collection(db, "users"), {
+          name: name,
+          email: email,
+        });
+        console.log("Document written with ID: ", docRef.id);
+
       } catch (error) {
         console.error("Error", error);
         dispatch(setLoading(false));
       }
     }
-  }, [])
+  }, [dispatch, createUserWithEmailAndPassword])
 
   return {
     control,
@@ -108,14 +99,14 @@ export const SignupScreen = () => {
               },
             }} />
 
-            <TextInput control={control} name="password" label={"Enter Password"} rules={{
+            <TextInput control={control} name="password" label={"Enter Password"} secureTextEntry rules={{
               required: {
                 value: true,
                 message: "Password is required",
               },
             }} />
 
-            <TextInput control={control} name="rePassword" label={"Re-enter Password"} rules={{
+            <TextInput control={control} name="rePassword" label={"Re-enter Password"} secureTextEntry rules={{
               required: {
                 value: true,
                 message: "Please re-enter your password",
