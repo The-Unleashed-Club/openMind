@@ -25,6 +25,7 @@
     "expo-updates": "~0.16.4",
     "firebase": "^9.20.0",
     "react": "18.2.0",
+    "react-hook-form": "^7.50.1",
     "react-native": "0.71.6",
     "react-native-gesture-handler": "~2.9.0",
     "react-native-gifted-chat": "^2.0.1",
