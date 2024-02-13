@@ -1,18 +1,14 @@
 import React from "react";
-import { View, StyleSheet, Image, Text } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 
-
-
-const Loading_Screen = () => {
-
-
+const LoadingScreen = () => {
   return (
     <View style={styles.container}>
 
       <Image
         style={styles.image}
         resizeMode="contain"
-        source={require("./assets/load2.gif")}
+        source={require("../../assets/load2.gif")}
       />
 
     </View>
@@ -27,7 +23,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: '#000000'
   },
-  container1:{
+  container1: {
     width: '100%',
     paddingTop: '5%',
     paddingHorizontal: '10%'
@@ -38,4 +34,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Loading_Screen;
+export default LoadingScreen;

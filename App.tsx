@@ -4,7 +4,7 @@ import firebaseConfig from './src/firebase/firebaseConfig';
 import Home from "./src/navigation/navigation";
 import { Provider } from "react-redux";
 import store from "./src/state-managment/store";
-import Loading_Screen from './loading';
+import LoadingScreen from '@/Screens/LoadingScreen';
 import {
   useFonts,
   OpenSans_300Light,
@@ -58,7 +58,7 @@ export default function App() {
 
 
   if (!fontsLoaded) {
-    return < Loading_Screen />;
+    return < LoadingScreen />;
   } else {
 
     // please check developer mode in navigation.js before continuing.
