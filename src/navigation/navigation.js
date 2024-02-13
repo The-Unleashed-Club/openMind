@@ -7,7 +7,7 @@ import { auth, onAuthStateChanged } from "../firebase/firebase-utilities";
 import { useDispatch, useSelector } from 'react-redux';
 import { setLoading } from '../state-managment/reducers';
 
-import Loading_Screen from '../../loading';
+import LoadingScreen from '../Screens/LoadingScreen';
 
 import Login from "../Screens/login";
 import SignUp from "../Screens/signUp";
@@ -77,7 +77,7 @@ export default function Home() {
   return (
     <NavigationContainer>
       {isLoading ? (
-        <Loading_Screen />
+        <LoadingScreen />
       ) : user ? (<AppScreens />) : (<AuthScreens />)}
     </NavigationContainer>
   );
