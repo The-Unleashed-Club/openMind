@@ -1,6 +1,5 @@
 
-import React, { useState, useEffect, useContext } from 'react';
-import { StyleSheet, Text, Image, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { auth, onAuthStateChanged } from "../firebase/firebase-utilities";
@@ -18,42 +17,32 @@ import CreateImage from '../Screens/createimage';
 import SocketChat from '../Screens/ChatClient';
 import ChatListScreen from '../Screens/chatlist';
 
-
-
 const Stack = createStackNavigator();
 
-
-function AuthScreens() {
-  return (
-
-    <Stack.Navigator screenOptions={{ headerShown: false }} >
-      <Stack.Screen name="welcome_screen" component={WelcomeScreen} />
-      <Stack.Screen name="login" component={Login} />
-      <Stack.Screen name="signUp" component={SignupScreen} />
-    </Stack.Navigator>
-
-  );
-}
-
-function AppScreens() {
-  return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="chatListScreen" component={ChatListScreen} />
-      <Stack.Screen name="choice" component={Choice} />
-      <Stack.Screen name="createChat" component={CreateChat} />
-      <Stack.Screen name="createimage" component={CreateImage} />
-      <Stack.Screen name="socketChat" component={SocketChat} />
-    </Stack.Navigator>
-  );
+export const AuthScreens = () => {
+  return <Stack.Navigator screenOptions={{ headerShown: false }} >
+    <Stack.Screen name="welcome_screen" component={WelcomeScreen} />
+    <Stack.Screen name="login" component={Login} />
+    <Stack.Screen name="signUp" component={SignupScreen} />
+  </Stack.Navigator>
 }
 
 
+export const AppScreens = () => {
+  return <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Screen name="chatListScreen" component={ChatListScreen} />
+    <Stack.Screen name="choice" component={Choice} />
+    <Stack.Screen name="createChat" component={CreateChat} />
+    <Stack.Screen name="createimage" component={CreateImage} />
+    <Stack.Screen name="socketChat" component={SocketChat} />
+  </Stack.Navigator>
+}
 
 export default function Home() {
 
   const dispatch = useDispatch();
   const [user, isUser] = useState(false);
-  const isLoading = useSelector((state) => state.isLoading);
+  const isLoading = useSelector((state: any) => state.isLoading);
 
   useEffect(() => {
     const redirect = onAuthStateChanged(auth, (user) => {
@@ -62,17 +51,12 @@ export default function Home() {
         isUser(true);
         dispatch(setLoading(false));
       } else {
-        dispatch(isUser(null));
         isUser(false);
       }
     });
 
     return redirect;
   }, []);
-
-
-  //  Comment Below stack for Development Mode /////
-  //  UnComment Below stack for Production Mode /////
 
   return (
     <NavigationContainer>
@@ -81,14 +65,4 @@ export default function Home() {
       ) : user ? (<AppScreens />) : (<AuthScreens />)}
     </NavigationContainer>
   );
-
-
-
-  //   ///  {/* Developent Mode  */}  ///
-  //   ///  {/* UnComment below Stack for App */}  ///
-  // return (
-  //   <NavigationContainer>
-  //      <AppScreens />
-  //   </NavigationContainer>
-  // );
 }
