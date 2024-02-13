@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { View, StyleSheet, Alert, KeyboardAvoidingView, Keyboard, Platform, TouchableWithoutFeedback } from "react-native";
 
-import { setLoading } from "../state-managment/reducers";
+import { setLoading, setUser } from "../state-managment/reducers";
 import { useDispatch } from "react-redux";
 import {
   db, collection, addDoc, auth,
@@ -40,17 +40,18 @@ export const useSignupScreen = () => {
     } else {
       dispatch(setLoading(true));
       try {
-        await createUserWithEmailAndPassword(auth, email, password);
+        const userCredentials = await createUserWithEmailAndPassword(auth, email, password);
         const docRef = await addDoc(collection(db, "users"), {
           name: name,
           email: email,
         });
+        dispatch(setUser(userCredentials.user))
         console.log("Document written with ID: ", docRef.id);
-
       } catch (error) {
         console.error("Error", error);
-        dispatch(setLoading(false));
       }
+
+      dispatch(setLoading(false));
     }
   }, [dispatch, createUserWithEmailAndPassword])
 

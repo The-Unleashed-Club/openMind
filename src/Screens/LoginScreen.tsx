@@ -32,7 +32,7 @@ export const useLoginScreen = () => {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       dispatch(setUser(userCredential.user));
     } catch (error) {
-      console.log(error.message);
+      console.error(error.message);
       dispatch(setLoading(false));
     }
   }, [dispatch, signInWithEmailAndPassword])

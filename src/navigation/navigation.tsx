@@ -47,7 +47,6 @@ export default function Home() {
   useEffect(() => {
     const redirect = onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log(user);
         isUser(true);
         dispatch(setLoading(false));
       } else {
