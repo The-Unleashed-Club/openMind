@@ -8,7 +8,7 @@ import { setLoading } from '../state-managment/reducers';
 
 import LoadingScreen from '../Screens/LoadingScreen';
 
-import Login from "../Screens/login";
+import { LoginScreen } from "../Screens/LoginScreen";
 import { SignupScreen } from "../Screens/SignupScreen";
 import { WelcomeScreen } from '../Screens/WelcomeScreen';
 import CreateChat from '../Screens/createchat';
@@ -22,7 +22,7 @@ const Stack = createStackNavigator();
 export const AuthScreens = () => {
   return <Stack.Navigator screenOptions={{ headerShown: false }} >
     <Stack.Screen name="welcome_screen" component={WelcomeScreen} />
-    <Stack.Screen name="login" component={Login} />
+    <Stack.Screen name="login" component={LoginScreen} />
     <Stack.Screen name="signUp" component={SignupScreen} />
   </Stack.Navigator>
 }
