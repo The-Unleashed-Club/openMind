@@ -1,8 +1,7 @@
-import {LogBox} from 'react-native';
+import { LogBox } from 'react-native';
 import { getApp, initializeApp } from 'firebase/app';
 import firebaseConfig from './src/firebase/firebaseConfig';
 import Home from "./src/navigation/navigation";
-import AppLoading from 'expo-app-loading';
 import { Provider } from "react-redux";
 import store from "./src/state-managment/store";
 import Loading_Screen from './loading';
@@ -22,10 +21,6 @@ import {
   OpenSans_800ExtraBold_Italic,
 } from '@expo-google-fonts/open-sans';
 
-
-
-
-  
 try {
   initializeApp(firebaseConfig);
 } catch (err) {
@@ -65,13 +60,13 @@ export default function App() {
   if (!fontsLoaded) {
     return < Loading_Screen />;
   } else {
-    
-     // please check developer mode in navigation.js before continuing.
+
+    // please check developer mode in navigation.js before continuing.
     return (
       <Provider store={store}>
         <Home />
       </Provider>
-    ); 
+    );
   }
 
 }
