@@ -1,9 +1,9 @@
 
-import React , { useState , useEffect , useContext } from 'react';
-import { StyleSheet, Text, Image ,View} from 'react-native';
+import React, { useState, useEffect, useContext } from 'react';
+import { StyleSheet, Text, Image, View } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { auth , onAuthStateChanged   } from "../firebase/firebase-utilities";
+import { auth, onAuthStateChanged } from "../firebase/firebase-utilities";
 import { useDispatch, useSelector } from 'react-redux';
 import { setLoading } from '../state-managment/reducers';
 
@@ -11,7 +11,7 @@ import Loading_Screen from '../../loading';
 
 import Login from "../Screens/login";
 import SignUp from "../Screens/signUp";
-import Welcome_screen from '../Screens/welcome';
+import WelcomeScreen from '../Screens/WelcomeScreen';
 import CreateChat from '../Screens/createchat';
 import Choice from '../Screens/choice';
 import CreateImage from '../Screens/createimage';
@@ -23,19 +23,19 @@ import ChatListScreen from '../Screens/chatlist';
 const Stack = createStackNavigator();
 
 
- function AuthScreens() {
+function AuthScreens() {
   return (
 
-      <Stack.Navigator screenOptions={{ headerShown: false }} >
-        <Stack.Screen name="welcome_screen" component={Welcome_screen} />
-        <Stack.Screen name="login" component={Login} />
-        <Stack.Screen name="signUp" component={SignUp} />
-      </Stack.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false }} >
+      <Stack.Screen name="welcome_screen" component={WelcomeScreen} />
+      <Stack.Screen name="login" component={Login} />
+      <Stack.Screen name="signUp" component={SignUp} />
+    </Stack.Navigator>
 
   );
- }
+}
 
- function AppScreens() {
+function AppScreens() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="chatListScreen" component={ChatListScreen} />
@@ -45,7 +45,7 @@ const Stack = createStackNavigator();
       <Stack.Screen name="socketChat" component={SocketChat} />
     </Stack.Navigator>
   );
- }
+}
 
 
 
@@ -74,15 +74,15 @@ export default function Home() {
   //  Comment Below stack for Development Mode /////
   //  UnComment Below stack for Production Mode /////
 
-    return (
-      <NavigationContainer>
-        {isLoading ? (
-          <Loading_Screen />
-        ) : user ? ( <AppScreens />) : ( <AuthScreens />)}
-      </NavigationContainer>
-    );
+  return (
+    <NavigationContainer>
+      {isLoading ? (
+        <Loading_Screen />
+      ) : user ? (<AppScreens />) : (<AuthScreens />)}
+    </NavigationContainer>
+  );
 
-  
+
 
   //   ///  {/* Developent Mode  */}  ///
   //   ///  {/* UnComment below Stack for App */}  ///

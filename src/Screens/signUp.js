@@ -1,14 +1,12 @@
 import React from "react";
-import { View, TextInput, Button, StyleSheet, Text, Alert } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { View, TextInput, StyleSheet, Text, Alert } from "react-native";
 import {
   auth,
   createUserWithEmailAndPassword,
 } from "../firebase/firebase-utilities";
 import Button_1 from "../components/button1";
-import { setLoading, setUser } from "../state-managment/reducers";
+import { setLoading } from "../state-managment/reducers";
 import { useDispatch } from "react-redux";
-import firebaseConfig from "../firebase/firebaseConfig";
 import { db, collection, addDoc } from "../firebase/firebase-utilities";
 
 const SignUp = () => {
@@ -17,7 +15,6 @@ const SignUp = () => {
   const [RePassword, setRePassword] = React.useState("");
   const [name, setName] = React.useState("");
   const dispatch = useDispatch();
-  const navigation = useNavigation();
 
   const handleSignUp = () => {
     if (password != RePassword) {

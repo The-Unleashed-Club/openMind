@@ -1,10 +1,28 @@
-import React from "react";
-import { View, StyleSheet, Image, Text } from "react-native";
+import React, { useCallback } from "react";
+import { View, StyleSheet, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import Button_1 from "../components/button1";
 
-const Welcome_screen = () => {
-  const navigation = useNavigation();
+export const useWelcomeScreen = () => {
+  const { navigate } = useNavigation()
+
+  const navigateToLoginScreen = useCallback(() => {
+    navigate("login");
+  }, [navigate])
+
+  const navigateToSignUpScreen = useCallback(() => {
+    navigate("signUp");
+  }, [navigate])
+
+  return {
+    navigateToLoginScreen,
+    navigateToSignUpScreen
+  }
+}
+
+const WelcomeScreen = () => {
+
+  const { navigateToLoginScreen, navigateToSignUpScreen } = useWelcomeScreen()
 
   return (
     <View style={styles.container}>
@@ -16,13 +34,13 @@ const Welcome_screen = () => {
       <View style={{ width: "100%" }}>
         <View style={styles.container1}>
           <Button_1
-            onPress={() => navigation.navigate("login")}
+            onPress={navigateToLoginScreen}
             title={"Login"}
           />
         </View>
         <View style={styles.container1}>
           <Button_1
-            onPress={() => navigation.navigate("signUp")}
+            onPress={navigateToSignUpScreen}
             title={"signUp"}
           />
         </View>
@@ -50,4 +68,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Welcome_screen;
+export default WelcomeScreen;
