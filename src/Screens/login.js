@@ -1,8 +1,7 @@
 import React from "react";
-import { View, TextInput, Button, StyleSheet, Text } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { View, TextInput, StyleSheet, Text } from "react-native";
 import { useDispatch } from "react-redux";
-import { auth, signInWithEmailAndPassword , onAuthStateChanged   } from "../firebase/firebase-utilities";
+import { auth, signInWithEmailAndPassword } from "../firebase/firebase-utilities";
 import { setLoading, setUser } from "../state-managment/reducers";
 import Button_1 from "../components/button1"
 
@@ -13,7 +12,6 @@ const SignIn = () => {
   const [password, setPassword] = React.useState("");
 
   const dispatch = useDispatch();
-  const navigation = useNavigation();
 
   const handleSignIn = () => {
     // Dispatch setLoading action with true to show the loading screen
@@ -24,14 +22,14 @@ const SignIn = () => {
         let user = userCredential.user;
         // Dispatch setUser action with the user data to update the user state
         dispatch(setUser(user));
-        
+
       })
       .catch((error) => {
         // Handle error
         console.log(error.message);
         dispatch(setLoading(false));
       })
-     
+
   };
 
   return (
@@ -41,22 +39,22 @@ const SignIn = () => {
         <Text style={styles.SignInLabel}>SignIn</Text>
       </View>
 
-      <View style={{width: '100%'}} >
-          <TextInput
-            style={styles.input}
-            placeholder="Email"
-            placeholderTextColor={'#ffffff'}
-            value={email}
-            onChangeText={setEmail}
-          />
-          <TextInput
-            style={styles.input}
-            placeholder="Password"
-            placeholderTextColor={'#ffffff'}
-            secureTextEntry
-            value={password}
-            onChangeText={setPassword}
-          />
+      <View style={{ width: '100%' }} >
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          placeholderTextColor={'#ffffff'}
+          value={email}
+          onChangeText={setEmail}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          placeholderTextColor={'#ffffff'}
+          secureTextEntry
+          value={password}
+          onChangeText={setPassword}
+        />
       </View>
 
       <View style={styles.container2} >
@@ -75,7 +73,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: "10%",
     backgroundColor: '#ffffff'
   },
-  container1:{
+  container1: {
     width: "100%",
     justifyContent: "center",
     alignItems: 'center',
@@ -83,7 +81,7 @@ const styles = StyleSheet.create({
     paddingBottom: '20%',
     bottom: '10%',
   },
-  container2:{
+  container2: {
     width: "100%",
     justifyContent: "center",
     alignItems: 'center',
