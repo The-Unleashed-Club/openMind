@@ -20,6 +20,7 @@ import {
   OpenSans_700Bold_Italic,
   OpenSans_800ExtraBold_Italic,
 } from '@expo-google-fonts/open-sans';
+import { PaperProvider } from 'react-native-paper';
 
 try {
   initializeApp(firebaseConfig);
@@ -64,7 +65,9 @@ export default function App() {
     // please check developer mode in navigation.js before continuing.
     return (
       <Provider store={store}>
-        <Home />
+        <PaperProvider>
+          <Home />
+        </PaperProvider>
       </Provider>
     );
   }
