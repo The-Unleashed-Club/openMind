@@ -11,7 +11,7 @@ import LoadingScreen from '../Screens/LoadingScreen';
 
 import Login from "../Screens/login";
 import SignUp from "../Screens/signUp";
-import WelcomeScreen from '../Screens/WelcomeScreen';
+import { WelcomeScreen } from '../Screens/WelcomeScreen';
 import CreateChat from '../Screens/createchat';
 import Choice from '../Screens/choice';
 import CreateImage from '../Screens/createimage';
