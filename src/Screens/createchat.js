@@ -3,14 +3,10 @@ import {
   ActivityIndicator,
   StyleSheet,
   TextInput,
-  ScrollView,
-  KeyboardAvoidingView,
   FlatList,
-  Text,
   View,
 } from "react-native";
-import { Response_Item , Button_1 , colors } from "../components/export";
-import { db, collection, addDoc, doc, getDocs } from "../firebase/firebase-utilities";
+import { Response_Item, Button_1, colors } from "../components/export";
 
 const DATA = [
   {
@@ -33,16 +29,16 @@ const CreateChat = props => {
   const handleChatSubmit = async () => {
 
     setresponseRecieve(true);
-    
+
     if (inputText === "") {
       setresponseRecieve(false);
       return;
     }
-    const stringID = Math.random().toString(36).substring(2,7);
+    const stringID = Math.random().toString(36).substring(2, 7);
 
 
     // const querySnapshot = await getDocs(collection(db, "conversation"));
-    
+
     // querySnapshot.forEach((doc) => {
     //   setResponseText(responseText + doc.data().message)
     //   console.log(doc.id, " => ", doc.data().message);
@@ -53,7 +49,7 @@ const CreateChat = props => {
     //     id: stringID,
     //     title: inputText
     //   });
-   
+
 
     try {
       const response = await fetch(
@@ -98,7 +94,7 @@ const CreateChat = props => {
         //     console.error("Error adding document: ", e);
         //   }
         // ///// Updating Collection ////////
-   
+
       } else {
         console.error("Invalid response format:", json);
       }
@@ -113,33 +109,33 @@ const CreateChat = props => {
   return (
     <View style={styles.container}>
       <View style={styles.container1} >
-          <FlatList
-              data={DATA}
-              renderItem={({item}) => <Response_Item title={item.title} />}
-              keyExtractor={item => item.id}
-            />
+        <FlatList
+          data={DATA}
+          renderItem={({ item }) => <Response_Item title={item.title} />}
+          keyExtractor={item => item.id}
+        />
       </View>
 
-        {responseRecieve == true ? (
-          <ActivityIndicator size="large" color="#20DF7F" />
-        ) : (
-          <View style={styles.container2}>
-            <TextInput
-              style={styles.input}
-              onChangeText={handleInputChange}
-              value={inputText}
-              placeholder="Enter a message"
-              placeholderTextColor={"#ffffff"}
-            />
+      {responseRecieve == true ? (
+        <ActivityIndicator size="large" color="#20DF7F" />
+      ) : (
+        <View style={styles.container2}>
+          <TextInput
+            style={styles.input}
+            onChangeText={handleInputChange}
+            value={inputText}
+            placeholder="Enter a message"
+            placeholderTextColor={"#ffffff"}
+          />
 
-            <View style={styles.container3}>
-              <Button_1 title="Sent" onPress={handleChatSubmit} />
-            </View>
-            
+          <View style={styles.container3}>
+            <Button_1 title="Sent" onPress={handleChatSubmit} />
+          </View>
+
         </View>
-        )}
-       {/* {Platform.OS === "android" && <KeyboardAvoidingView behavior="padding" />} */}
-        
+      )}
+      {/* {Platform.OS === "android" && <KeyboardAvoidingView behavior="padding" />} */}
+
       {/* </ScrollView> */}
     </View>
   );

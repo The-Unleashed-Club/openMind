@@ -7,7 +7,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import { db, collection, getDocs } from "../firebase/firebase-utilities";
+import { db, collection, getDocs } from "../firebase-utilities";
 
 const ChatListScreen = ({ navigation }) => {
   const [chatList, setChatList] = useState([]);
