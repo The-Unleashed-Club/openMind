@@ -6,12 +6,12 @@
 # OpenMind
 
 Innovative Conversations: Powered by OpenAI's Cutting-edge API. 
-The App give instant Responses to Your Messages in Real-time. App aslo can create original, realistic images and art from a text description. It can combine concepts, attributes, and styles which is powered by open-AI. We are using RapidAPI services to fullfill our requirements. We are also wokring on cross-site conversation between different users, where our app can give you professional suggestions to your messages, emails etc.  
+The App gives instant Responses to Your Messages in Real-time. App also can create original, realistic images and art from a text description. It can combine concepts, attributes, and styles which is powered by open-AI. We are using RapidAPI services to fullfill our requirements. We are also working on cross-site conversation between different users, where our app can give you professional suggestions to your messages, emails etc.  
 
 
 ### Our vision
 
-The problem is that users rely on web applications, which provide links to various websites when searching for answers to their questions. This process is time-consuming, and the user may not always find the information they are looking for. The need of the hour is to create a mobile app that will leverage OpenAI tools to provide quick and reliable solutions to user queries,quality, and make urban transportation more efficient and affordable for everyone.
+The problem is that users rely on web applications, which provide links to various websites when searching for answers to their questions. This process is time-consuming, and the user may not always find the information they are looking for. The need of the hour is to create a mobile app that will leverage OpenAI tools to provide quick and reliable solutions to user queries, quality, and make urban transportation more efficient and affordable for everyone.
 
 [![Watch the video](http://i3.ytimg.com/vi/_1YkhggKChk/hqdefault.jpg)](https://youtu.be/_1YkhggKChk)
 
@@ -66,7 +66,7 @@ Start the server
  
 ## How we built it
 - We set react native project with expo CLI.
-- WE done authentication using Firebase.
+- We did authentication using Firebase.
 - We integrated OpenAI API to generate the responses.
 
 # Contribution Guidelines
